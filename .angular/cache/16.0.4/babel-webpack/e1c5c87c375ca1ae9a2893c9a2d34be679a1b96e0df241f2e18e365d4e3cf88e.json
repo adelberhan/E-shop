@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Product {}\n// export interface Product {\n//   // products?: Product[];\n//   // product: { product: Product[] };\n// }","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}
