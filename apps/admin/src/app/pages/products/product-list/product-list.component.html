@@ -1,0 +1,84 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card header="Product" subheader="List of all product">
+    <div class="p-grid">
+      <div class="p-col-md-8 p-col-sm-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left m-3">
+            <p-button
+              label="New"
+              icon="pi pi-plus"
+              styleClass="p-button-success"
+              class="p-button p-button-success"
+              routerLink="form"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="p-grid">
+      <p-table
+        [paginator]="true"
+        [rows]="10"
+        [showCurrentPageReport]="true"
+        [value]="products"
+        [rowsPerPageOptions]="[20, 30, 50]"
+        [tableStyle]="{ 'min-width': '10rem' }"
+        responsiveLayout="scroll | stack"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name">
+              Name <p-sortIcon field="name"></p-sortIcon>
+            </th>
+            <th>Image</th>
+            <th pSortableColumn="price">
+              Price <p-sortIcon field="price"></p-sortIcon>
+            </th>
+            <th pSortableColumn="stock">
+              Stock <p-sortIcon field="stock"></p-sortIcon>
+            </th>
+            <th pSortableColumn="category">
+              Category <p-sortIcon field="category"></p-sortIcon>
+            </th>
+            <th pSortableColumn="dateCreated">
+              Created At<p-sortIcon field="dateCreated"></p-sortIcon>
+            </th>
+
+            <th></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-product>
+          <tr>
+            <td>{{ product.name }}</td>
+            <td><img [src]="product.img" style="width: 100px" alt="" /></td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.countInStock }}</td>
+            <td>{{ product.category.name }}</td>
+            <td>{{ product.dateCreated | date : 'short' }}</td>
+
+            <td>
+              <p-button
+                icon="pi pi-trash"
+                styleClass="p-button-danger"
+                (onClick)="deleteProduct(product.id)"
+                class="mr-2"
+              ></p-button>
+              <p-button
+                icon="pi pi-pencil"
+                styleClass="p-button-success"
+                (onClick)="updateProduct(product.id)"
+                class=""
+              ></p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </p-card>
+</div>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>

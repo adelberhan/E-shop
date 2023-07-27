@@ -1,0 +1,33 @@
+.d-item {
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  .pi {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+  }
+  .name {
+    font-size: 1.2em;
+  }
+  .number {
+    margin-top: 50px;
+    font-size: 2em;
+    
+  }
+}
+.d-order {
+  background: linear-gradient(255deg, #D34147 0%, #000000 100%);
+}
+
+.d-users{
+background: linear-gradient(0deg, #D34147 0%, #000000 100%);
+
+}
+.d-totalOrders{
+background: linear-gradient(90deg, #D34147 0%, #000000 100%);
+
+}
+.d-product{
+background: linear-gradient(180deg, #D34147 0%, #000000 100%);
+
+}

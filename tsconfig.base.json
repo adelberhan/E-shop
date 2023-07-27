@@ -1,0 +1,32 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "strictPropertyInitialization": false,
+    "noImplicitAny": false,
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "strictNullChecks": false,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@env/*": ["environments/*"],
+      "@ng-shop/cart": ["libs/orders/src/lib/services/cart.service.ts"],
+      "@ng-shop/orders": ["libs/orders/src/index.ts"],
+      "@ng-shop/products": ["libs/products/src/index.ts"],
+      "@ng-shop/status": ["libs/orders/src/lib/order_contents.ts"],
+      "@ng-shop/ui": ["libs/ui/src/index.ts"],
+      "@ng-shop/users": ["libs/users/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"],
+ 
+}

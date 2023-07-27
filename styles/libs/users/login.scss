@@ -1,0 +1,27 @@
+.login-register {
+          background: linear-gradient(269deg, #53767d 0%, #121216 5%);
+  height: 100vh;
+  
+  &-panel {
+    width: 620px;
+    height: 525px;
+       background: linear-gradient(269deg, #53767d 0%, #121216 5%);
+    background-color: transparent;
+    position: absolute;
+    left: calc(50% - 325px);
+    top: calc(50% - 260px);
+  }
+  img{
+    left: 0;
+    top: 0;
+    height: 100%; width: 100%; display:block;
+    
+  }
+  .btn-full{
+    width: 100%;
+    padding: 5px;
+  }
+  .p-inputgroup-addon{
+    padding: 8px;
+  }
+}

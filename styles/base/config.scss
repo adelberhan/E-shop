@@ -1,0 +1,12 @@
+body,
+.p-component {
+  font-family: sans-serif, 'open sans';
+  font-size: 14px;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  @include reset-lest;
+  padding:0px 0px 0px 40px;
+}

@@ -1,0 +1,63 @@
+//Base
+@import './base/colors.scss'; //1
+@import './base/fonts.scss'; //2
+@import './base/mixin.scss'; //3
+
+//PrimeNg
+@import 'node_modules/primeicons/primeicons.css';
+@import 'node_modules/primeng/resources/themes/lara-light-blue/theme.css';
+@import 'node_modules/primeng/resources/primeng.min.css';
+@import '/node_modules/primeflex/primeflex.css';
+@import '/node_modules/animate.css/animate.css';
+
+@import './base/config.scss'; //4
+
+//pages
+@import './apps/shop/pages/home-page.scss';
+@import './apps/shop/pages/products-home-page.scss';
+// @import './apps/shop/';
+
+//shared
+@import './apps/shop/shared/footer.scss';
+@import './apps/shop/shared/header.scss';
+@import './apps/shop/shared/nav.scss';
+
+//Libs
+@import './libs/products/products.scss';
+@import './libs/orders/orders.scss';
+@import './libs/ui/ui.scss';
+
+.container {
+  max-width: 90%;
+  padding: 20px;
+  margin: 0 auto;
+  background-color: var(--surface-200);
+  line-height: 0px;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.p-button {
+  background-color: $primary-color;
+  border: 0;
+  color: white;
+}
+.p-button:hover {
+  background-color: #8b898f !important;
+}
+
+.banner-button:enabled:hover {
+  color: white;
+}
+
+.p-toast .p-toast-message.p-toast-message-success{
+  background-color: #e7e1e1ee;
+  // color:$primary-color !important ;
+  border: $primary-color !important ;
+}
+
+// .p-toast .p-toast-message.p-toast-message-success .p-toast-message-icon, .p-toast .p-toast-message.p-toast-message-success .p-toast-icon-close{
+//   color:red
+// }

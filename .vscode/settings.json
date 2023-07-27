@@ -1,0 +1,22 @@
+{
+  "git.ignoreLimitWarning": true,
+  "liveServer.settings.port": 5501,
+  "tslint.alwaysShowStatus": true,
+  "tslint.alwaysShowRuleFailuresAsWarnings": true,
+  "tslint.ignoreDefinitionFiles": true,
+  "tslint.jsEnable": true,
+  "tslint.run": "onType",
+  "tslint.trace.server": "off",
+  "tslint.suppressWhileTypeErrorsPresent": true,
+  "tslint.validateWithDefaultConfig": true,
+  "cSpell.words": [
+    "Dashbord",
+    "Dashpord",
+    "devkit",
+    "editmode",
+    "localstorge",
+    "primeng"
+  ],
+  "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" }
+}
