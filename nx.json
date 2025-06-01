@@ -77,5 +77,6 @@
     "@nrwl/angular:component": {
       "style": "scss"
     }
-  }
+  },
+  "nxCloudId": "683c3a536ac2ea619b3490e2"
 }

@@ -4,8 +4,8 @@ import { ProductSearchComponent } from './component/product-search/product-searc
 import { CategoriesBannerComponent } from './component/categories-banner/categories-banner.component';
 import { OrdersModule } from '../../../orders/src/orders.module';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductItemComponent } from './component /product-item/product-item.component';
-import { FeaturedProductsComponent } from './component /featured-products/featured-products.component';
+import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
+import { ProductItemComponent } from './components/product-item/product-item.component';
 import { ButtonModule } from 'primeng/button';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -14,6 +14,7 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { RatingModule } from 'primeng/rating';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { UiModule } from '@ng-shop/ui';
+
 
 
 const routes: Routes = [
@@ -40,14 +41,15 @@ const routes: Routes = [
     FormsModule,
     RatingModule,
     InputNumberModule, UiModule,
+    // NgStyle,
   ],
   declarations: [
     ProductSearchComponent,
     CategoriesBannerComponent,
-    ProductItemComponent,
-    FeaturedProductsComponent,
     ProductListComponent,
     ProductPageComponent,
+    FeaturedProductsComponent,
+    ProductItemComponent,
   ],
   exports: [
     ProductSearchComponent,

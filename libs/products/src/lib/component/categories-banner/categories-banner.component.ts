@@ -3,6 +3,7 @@ import { Category } from '../../models/category';
 import { CategoriesService } from '../../services/categories.service';
 import { Subject, takeUntil } from 'rxjs';
 
+
 @Component({
   selector: 'product-categories-banner',
   templateUrl: './categories-banner.component.html',
