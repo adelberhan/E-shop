@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 
 @Component({
-  selector: 'ng-shop-featured-products',
+  selector: 'product-featured-products',
   templateUrl: './featured-products.component.html',
   styleUrls: ['./featured-products.component.css']
 })
