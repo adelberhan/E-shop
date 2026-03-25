@@ -199,6 +199,10 @@
     gap: 2rem;
   }
 
+    .product-list-page__layout-no {
+    gap: 2rem;
+  }
+
   .product-list-page__sidebar {
     position: sticky;
     top: 1.5rem;
@@ -215,3 +219,18 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+.product-list-page__content--category .grid {
+  justify-content: center;
+}
+
+.product-list-grid__item {
+  width: 100%;
+}
+
+/* Fix مهم للصورة */
+.product-item__image-link {
+  aspect-ratio: 1 / 1;
+  height: auto;
+}
+

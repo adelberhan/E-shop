@@ -1,0 +1,40 @@
+﻿
+ NX   Running target build for project ngshop and 1 task it depends on:
+
+
+
+> nx run users:build:production
+
+[34mBuilding Angular Package[39m
+
+------------------------------------------------------------------------------
+Building entry point '@ng-shop/users'
+------------------------------------------------------------------------------
+Copying assets
+Writing package manifest
+Built @ng-shop/users
+[32m[39m
+[32m------------------------------------------------------------------------------[39m
+[32mBuilt Angular Package[39m
+[32m - from: D:\Docements\Web_dev\Angular\codes\shop\E-shop\libs\users[39m
+[32m - to:   D:\Docements\Web_dev\Angular\codes\shop\E-shop\dist\libs\users[39m
+[32m------------------------------------------------------------------------------[39m
+[37m[37m[39m[37m[39m
+[37m[37mBuild at: [1m2026-03-25T09:32:25.433Z[22m - Time: [1m718[22mms[39m[37m[39m
+[37m[37m[39m[37m[39m
+
+[0m[7m[1m[31m NX [39m[22m[27m[0m  [31mCannot read properties of undefined (reading 'data')[39m
+
+Pass --verbose to see the stacktrace.
+
+
+
+
+ NX   Running target build for project ngshop and 1 task it depends on failed
+
+Failed tasks:
+
+- users:build:production
+
+Hint: run the command with --verbose for more details.
+

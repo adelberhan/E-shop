@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { RouterModule, Routes } from '@angular/router';
 // import { appRoutes } from './app.routes';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { UiModule } from '@ng-shop/ui';
@@ -34,12 +35,21 @@ const routes: Routes = [
     path: '',
     component: HomePageComponent,
   },
+  {
+    path: 'not-found',
+    component: NotFoundPageComponent,
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found',
+  },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
+    NotFoundPageComponent,
     HeaderComponent,
     FooterComponent,
     NavComponent,

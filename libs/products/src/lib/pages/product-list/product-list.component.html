@@ -1,11 +1,21 @@
 <section class="product-list-page">
-  <div class="product-list-page__layout">
+  <div
+    [ngClass]="
+      isCategoryPage
+        ? 'product-list-page__layout-no'
+        : 'product-list-page__layout'
+    "
+  >
     <aside class="product-list-page__sidebar" *ngIf="!isCategoryPage">
       <div class="product-filters">
         <div class="product-filters__header">
           <div class="product-filters__heading">
-            <span class="product-filters__eyebrow">{{ 'filters.browseBy' | translate }}</span>
-            <h2 class="product-filters__title">{{ 'filters.categories' | translate }}</h2>
+            <span class="product-filters__eyebrow">{{
+              'filters.browseBy' | translate
+            }}</span>
+            <h2 class="product-filters__title">
+              {{ 'filters.categories' | translate }}
+            </h2>
           </div>
 
           <button
@@ -32,7 +42,10 @@
           class="product-filters__list"
           *ngIf="isCategoriesOpen && categories.length; else noCategories"
         >
-          <label class="product-filters__item" *ngFor="let category of categories">
+          <label
+            class="product-filters__item"
+            *ngFor="let category of categories"
+          >
             <p-checkbox
               [(ngModel)]="category.checked"
               [binary]="true"
@@ -56,12 +69,14 @@
     </aside>
 
     <div
-      class="product-list-page__content "
+      class="product-list-page__content"
       [class.product-list-page__content--category]="isCategoryPage"
     >
       <header class="product-list-page__header">
         <div>
-          <span class="product-list-page__eyebrow">{{ 'products.catalog' | translate }}</span>
+          <span class="product-list-page__eyebrow">{{
+            'products.catalog' | translate
+          }}</span>
           <h1 class="product-list-page__title">
             {{
               isCategoryPage

@@ -1,0 +1,6 @@
+[build]
+  command = "nx build ngshop --configuration=production"
+  publish = "dist/apps/ngshop"
+
+[build.environment]
+  NODE_VERSION = "20"

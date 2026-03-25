@@ -1,0 +1,115 @@
+@import '../../../../../../styles/base/colors.scss';
+
+:host {
+  display: block;
+}
+
+.not-found-page {
+  display: grid;
+  place-items: center;
+  min-height: 70vh;
+  padding: 2rem 0 3rem;
+}
+
+.not-found-page__card {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  width: min(100%, 38rem);
+  padding: 2rem 1.5rem;
+  border: 1px solid var(--surface-200);
+  border-radius: 1.5rem;
+  background:
+    radial-gradient(circle at top, rgba(255, 58, 0, 0.08), transparent 35%),
+    linear-gradient(180deg, var(--surface-0), var(--surface-50));
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+  text-align: center;
+}
+
+.not-found-page__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.5rem;
+  min-height: 5.5rem;
+  padding: 1rem;
+  border-radius: 50%;
+  background: rgba(255, 58, 0, 0.12);
+  color: $primary-color;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.not-found-page__eyebrow {
+  color: var(--surface-600);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.not-found-page__title,
+.not-found-page__subtitle {
+  margin: 0;
+}
+
+.not-found-page__title {
+  color: var(--surface-900);
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  line-height: 1.12;
+}
+
+.not-found-page__subtitle {
+  max-width: 30rem;
+  color: var(--surface-600);
+  line-height: 1.7;
+}
+
+.not-found-page__actions {
+  display: grid;
+  gap: 0.75rem;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.not-found-page__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 3.2rem;
+  border-radius: 0.95rem;
+  text-decoration: none;
+}
+
+.not-found-page__button--primary {
+  background: $primary-color;
+  border: 0;
+  color: #fff;
+}
+
+.not-found-page__button--primary:hover {
+  background: $primary-color-dark;
+}
+
+.not-found-page__button--secondary {
+  background: var(--surface-0);
+  border: 1px solid var(--surface-300);
+  color: var(--surface-800);
+}
+
+.not-found-page__button--secondary:hover {
+  border-color: var(--surface-400);
+  background: var(--surface-50);
+}
+
+@media (min-width: 768px) {
+  .not-found-page__card {
+    padding: 2.5rem 2rem;
+  }
+
+  .not-found-page__actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
