@@ -5,6 +5,7 @@ import { ProductsService } from '../../services/products.service';
 import { Category } from '../../models/category';
 import { CategoriesService } from '../../services/categories.service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'product-list',
@@ -22,7 +23,8 @@ export class ProductListComponent implements OnInit, OnDestroy {
   constructor(
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private translateService: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -70,5 +72,31 @@ export class ProductListComponent implements OnInit, OnDestroy {
 
   toggleCategories() {
     this.isCategoriesOpen = !this.isCategoriesOpen;
+  }
+
+  getCategoryLabel(categoryName: any): string {
+    const normalizedCategoryName =
+      typeof categoryName === 'string' ? categoryName.trim() : '';
+
+    if (!normalizedCategoryName) {
+      return '';
+    }
+
+    const translationKey = `categoryNames.${this.normalizeCategoryKey(
+      normalizedCategoryName
+    )}`;
+    const translatedValue = this.translateService.instant(translationKey);
+
+    return translatedValue === translationKey
+      ? normalizedCategoryName
+      : translatedValue;
+  }
+
+  private normalizeCategoryKey(categoryName: string): string {
+    return categoryName
+      .toLowerCase()
+      .replace(/&/g, 'and')
+      .replace(/[^a-z0-9]+/g, '_')
+      .replace(/^_+|_+$/g, '');
   }
 }

@@ -6,7 +6,7 @@ import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'ng-shop-thank-tou',
   templateUrl: './thank-tou.component.html',
-  styles: [],
+  styleUrls: ['./thank-tou.component.scss'],
 })
 export class ThankTouComponent implements OnInit {
   constructor(

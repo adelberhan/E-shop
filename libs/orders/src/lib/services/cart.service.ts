@@ -18,22 +18,29 @@ export class CartService {
   initCartLocalStorage() {
     const cart: Cart = this.getCart();
 
-    if (!cart) {
-      const initCart = {
-        items: [] as string[],
-      };
-      const initCartJson = JSON.stringify(initCart);
-      localStorage.setItem(CART_KEY, initCartJson);
-    } else {
-      this.cart$.next(cart);
-    }
+    this.saveCart(cart);
   }
 
   getCart(): Cart {
     const cartJsonString: string = localStorage.getItem(CART_KEY);
-    const cart: Cart = JSON.parse(cartJsonString);
-    
-    return cart;
+
+    if (!cartJsonString) {
+      return {
+        items: [],
+      };
+    }
+
+    try {
+      const cart: Cart = JSON.parse(cartJsonString);
+
+      return {
+        items: cart?.items ?? [],
+      };
+    } catch {
+      return {
+        items: [],
+      };
+    }
   }
 
   setCartItem(cartItem: CartItem, updateCartItem?: boolean): Cart {
@@ -58,9 +65,7 @@ export class CartService {
       cart.items.push(cartItem);
     }
 
-    const cartJson = JSON.stringify(cart);
-    localStorage.setItem(CART_KEY, cartJson);
-    this.cart$.next(cart);
+    this.saveCart(cart);
     return cart;
   }
 
@@ -68,9 +73,7 @@ export class CartService {
     const intialCart = {
       items: [],
     };
-    const intialCartJson = JSON.stringify(intialCart);
-    localStorage.setItem(CART_KEY, intialCartJson);
-    this.cart$.next(intialCart);
+    this.saveCart(intialCart);
   }
 
   deleteCartItem(productId: string) {
@@ -78,8 +81,15 @@ export class CartService {
     const newCart = cart.items.filter((item) => item.productId !== productId);
     cart.items = newCart;
 
-    const cartJsonString = JSON.stringify(cart);
-    localStorage.setItem(CART_KEY, cartJsonString);
-    this.cart$.next(cart);
+    this.saveCart(cart);
+  }
+
+  private saveCart(cart: Cart) {
+    const normalizedCart: Cart = {
+      items: cart?.items ?? [],
+    };
+    const cartJson = JSON.stringify(normalizedCart);
+    localStorage.setItem(CART_KEY, cartJson);
+    this.cart$.next(normalizedCart);
   }
 }

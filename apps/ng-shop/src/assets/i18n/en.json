@@ -1,123 +1,137 @@
 {
-  "header": {
-    "goHome": "Go to homepage",
-    "toggleNavigation": "Toggle navigation",
-    "switchLanguage": "Switch language"
-  },
-  "nav": {
-    "home": "Home",
-    "products": "Products"
-  },
-  "banner": {
-    "title": "The Best Products",
-    "subtitle": "In Every Category",
-    "seeMore": "See more"
-  },
-  "categories": {
-    "title": "Category"
-  },
-  "featured": {
-    "title": "Featured Products"
-  },
-  "filters": {
-    "browseBy": "Browse by",
-    "categories": "Categories",
-    "close": "Close",
-    "open": "Open",
-    "categoriesSoon": "Categories will appear here soon.",
-    "openToChoose": "Open categories to choose a filter."
-  },
-  "products": {
-    "catalog": "Catalog",
-    "categoryPageTitle": "Products in this category",
-    "discoverTitle": "Discover our products",
-    "emptyTitle": "No products found",
-    "emptyDescription": "Try changing the selected filters or check back again later."
-  },
-  "product": {
-    "details": "Product details",
-    "quantity": "Quantity",
-    "about": "About this product"
-  },
-  "buttons": {
-    "addToCart": "Add to cart",
-    "buyNow": "Buy now",
-    "checkout": "Checkout",
-    "continueShopping": "Continue shopping",
-    "remove": "Remove",
-    "browseProducts": "Browse products",
-    "backToCart": "Back to cart",
-    "placeOrder": "Place order",
-    "login": "Login",
-    "backToShop": "Back to shop"
-  },
-  "orderSummary": {
-    "title": "Order summary",
-    "itemPrice": "Item price",
-    "shipping": "Packing & Shipping",
-    "totalPrice": "Total price"
-  },
-  "common": {
-    "free": "Free"
-  },
-  "cart": {
-    "eyebrow": "Shopping cart",
-    "title": "My Cart",
-    "item": "item",
-    "items": "items",
-    "shippingInfo": "Shipping after payment. Delivery time 3-7 working days.",
-    "subtotal": "Subtotal",
-    "emptyTitle": "Your cart is empty",
-    "emptyDescription": "Add products to your cart to review them here."
-  },
-  "checkout": {
-    "eyebrow": "Checkout",
-    "title": "Shipping information",
-    "subtitle": "Fill in your delivery details to complete the order quickly and securely.",
-    "fullName": "Full name",
-    "emailAddress": "Email address",
-    "phoneNumber": "Phone number",
-    "country": "Country",
-    "selectCountry": "Select a country",
-    "streetAddress": "Street address",
-    "apartment": "Apartment, suite, etc.",
-    "city": "City",
-    "zipCode": "Zip code",
-    "secureNote": "Your checkout details are protected and used only to process this order."
-  },
-  "validation": {
-    "nameRequired": "Name is required",
-    "emailRequired": "Email is required",
-    "emailInvalid": "Enter a valid email address",
-    "phoneRequired": "Phone is required",
-    "countryRequired": "Country is required",
-    "streetRequired": "Street is required",
-    "apartmentRequired": "Apartment is required",
-    "cityRequired": "City is required",
-    "zipRequired": "Zip is required",
-    "passwordRequired": "Password is required"
-  },
-  "login": {
-    "heroEyebrow": "Welcome back",
-    "heroTitle": "Login to continue your shopping journey.",
-    "heroDescription": "Access your cart, checkout faster, and track your orders from one place.",
-    "account": "Account",
-    "title": "Sign in",
-    "subtitle": "Enter your email and password to access your account.",
-    "emailAddress": "Email address",
-    "emailPlaceholder": "name@example.com",
-    "password": "Password",
-    "passwordPlaceholder": "Enter your password",
-    "errors": {
-      "invalidCredentials": "Email or password are invalid",
-      "server": "Error in the server, please try again later!"
-    }
-  },
-  "thankYou": {
-    "title": "Thank you for shopping with us",
-    "subtitle": "Your order will be delivered in 3 working days"
-  },
-  "footer": {
-    "copy": "© 1994 - 2022 Adel Berhan"
-  }
+    "header":  {
+                   "goHome":  "Go to homepage",
+                   "toggleNavigation":  "Toggle navigation",
+                   "switchLanguage":  "Switch language"
+               },
+    "nav":  {
+                "home":  "Home",
+                "products":  "Products"
+            },
+    "banner":  {
+                   "title":  "The Best Products",
+                   "subtitle":  "In Every Category",
+                   "seeMore":  "See more"
+               },
+    "categories":  {
+                       "title":  "Category"
+                   },
+    "featured":  {
+                     "title":  "Featured Products"
+                 },
+    "filters":  {
+                    "browseBy":  "Browse by",
+                    "categories":  "Categories",
+                    "close":  "Close",
+                    "open":  "Open",
+                    "categoriesSoon":  "Categories will appear here soon.",
+                    "openToChoose":  "Open categories to choose a filter."
+                },
+    "products":  {
+                     "catalog":  "Catalog",
+                     "categoryPageTitle":  "Products in this category",
+                     "discoverTitle":  "Discover our products",
+                     "emptyTitle":  "No products found",
+                     "emptyDescription":  "Try changing the selected filters or check back again later."
+                 },
+    "product":  {
+                    "details":  "Product details",
+                    "quantity":  "Quantity",
+                    "about":  "About this product"
+                },
+    "buttons":  {
+                    "addToCart":  "Add to cart",
+                    "buyNow":  "Buy now",
+                    "checkout":  "Checkout",
+                    "continueShopping":  "Continue shopping",
+                    "remove":  "Remove",
+                    "browseProducts":  "Browse products",
+                    "backToCart":  "Back to cart",
+                    "placeOrder":  "Place order",
+                    "login":  "Login",
+                    "backToShop":  "Back to shop"
+                },
+    "orderSummary":  {
+                         "title":  "Order summary",
+                         "itemPrice":  "Item price",
+                         "shipping":  "Packing \u0026 Shipping",
+                         "totalPrice":  "Total price"
+                     },
+    "common":  {
+                   "free":  "Free"
+               },
+    "cart":  {
+                 "eyebrow":  "Shopping cart",
+                 "title":  "My Cart",
+                 "item":  "item",
+                 "items":  "items",
+                 "shippingInfo":  "Shipping after payment. Delivery time 3-7 working days.",
+                 "subtotal":  "Subtotal",
+                 "emptyTitle":  "Your cart is empty",
+                 "emptyDescription":  "Add products to your cart to review them here."
+             },
+    "checkout":  {
+                     "eyebrow":  "Checkout",
+                     "title":  "Shipping information",
+                     "subtitle":  "Fill in your delivery details to complete the order quickly and securely.",
+                     "fullName":  "Full name",
+                     "emailAddress":  "Email address",
+                     "phoneNumber":  "Phone number",
+                     "country":  "Country",
+                     "selectCountry":  "Select a country",
+                     "streetAddress":  "Street address",
+                     "apartment":  "Apartment, suite, etc.",
+                     "city":  "City",
+                     "zipCode":  "Zip code",
+                     "secureNote":  "Your checkout details are protected and used only to process this order."
+                 },
+    "validation":  {
+                       "nameRequired":  "Name is required",
+                       "emailRequired":  "Email is required",
+                       "emailInvalid":  "Enter a valid email address",
+                       "phoneRequired":  "Phone is required",
+                       "countryRequired":  "Country is required",
+                       "streetRequired":  "Street is required",
+                       "apartmentRequired":  "Apartment is required",
+                       "cityRequired":  "City is required",
+                       "zipRequired":  "Zip is required",
+                       "passwordRequired":  "Password is required"
+                   },
+    "login":  {
+                  "heroEyebrow":  "Welcome back",
+                  "heroTitle":  "Login to continue your shopping journey.",
+                  "heroDescription":  "Access your cart, checkout faster, and track your orders from one place.",
+                  "account":  "Account",
+                  "title":  "Sign in",
+                  "subtitle":  "Enter your email and password to access your account.",
+                  "emailAddress":  "Email address",
+                  "emailPlaceholder":  "name@example.com",
+                  "password":  "Password",
+                  "passwordPlaceholder":  "Enter your password",
+                  "errors":  {
+                                 "invalidCredentials":  "Email or password are invalid",
+                                 "server":  "Error in the server, please try again later!"
+                             }
+              },
+    "thankYou":  {
+                     "title":  "Thank you for shopping with us",
+                     "subtitle":  "Your order will be delivered in 3 working days"
+                 },
+    "footer":  {
+                   "copy":  "Â© 1994 - 2022 Adel Berhan"
+               },
+    "categoryNames":  {
+                          "beauty":  "Beauty",
+                          "books":  "Books",
+                          "camera":  "Camera",
+                          "electronics":  "Electronics",
+                          "fashion":  "Fashion",
+                          "games":  "Games",
+                          "garden":  "Garden",
+                          "home":  "Home",
+                          "music":  "Music",
+                          "shoes":  "Shoes",
+                          "sports":  "Sports",
+                          "toys":  "Toys"
+                      }
 }

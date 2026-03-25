@@ -232,6 +232,11 @@
   width: 100%;
 }
 
+:host-context([dir='rtl']) ::ng-deep .cart-item__remove-button.p-button {
+  gap: 0.45rem;
+  flex-direction: row-reverse;
+}
+
 @media (min-width: 576px) {
   .cart-page {
     padding-top: 1.5rem;

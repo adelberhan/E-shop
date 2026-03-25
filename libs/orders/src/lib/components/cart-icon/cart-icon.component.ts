@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  DestroyRef,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CartService } from '@ng-shop/cart';
 
@@ -13,13 +20,19 @@ export class CartIconComponent implements OnInit {
 
   cartCount = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private cdr: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.cartService.cart$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((cart) => {
-        this.cartCount = cart?.items.length ?? 0;
+        this.cartCount =
+          cart?.items?.reduce((total, item) => total + (item.quantity ?? 0), 0) ??
+          0;
+        this.cdr.markForCheck();
       });
   }
 }

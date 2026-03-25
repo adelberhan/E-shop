@@ -39,7 +39,7 @@
               [inputId]="category.id"
               (onChange)="categoryFilter()"
             ></p-checkbox>
-            <span>{{ category.name }}</span>
+            <span>{{ getCategoryLabel(category.name) }}</span>
           </label>
         </div>
 
