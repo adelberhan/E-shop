@@ -1,11 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'ng-shop-nav',
   templateUrl: './nav.component.html',
-  styles: [
-  ]
+  styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent {
+  @Output() linkClick = new EventEmitter<void>();
 
+  onLinkClick(): void {
+    this.linkClick.emit();
+  }
 }

@@ -1,9 +1,7 @@
-<i
-  class="pi pi-shopping-cart mr-4 p-text-secondary"
-  pBadge
-  style="font-size: 1.5rem; cursor: pointer;"
-  severity="danger"
-  [value]=$any(cartCount)
-  routerLink="/cart"
-  *ngIf="cartCount"
-></i>
+<a class="cart-icon" routerLink="/cart" aria-label="View shopping cart">
+  <span class="cart-icon__symbol">
+    <i class="pi pi-shopping-cart cart-icon__icon"></i>
+    <span *ngIf="cartCount" class="cart-icon__badge">{{ cartCount }}</span>
+  </span>
+  <span class="cart-icon__label">Cart</span>
+</a>

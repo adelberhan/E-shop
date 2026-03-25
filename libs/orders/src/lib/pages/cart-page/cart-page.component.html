@@ -1,71 +1,125 @@
 <div class="cart-page">
-  <div class="grid">
-    <div class="col-8">
-      <div>
+  <div class="cart-page__layout">
+    <section class="cart-page__content">
+      <div class="cart-page__topbar">
         <p-button
-          label="Continue shopping"
+          [label]="'buttons.continueShopping' | translate"
           icon="pi pi-arrow-left"
+          styleClass="p-button-outlined cart-page__back-button"
           (onClick)="backToShop()"
         ></p-button>
       </div>
-      <div>
-        <h4>My Cart: {{ cartCount }} items(s)</h4>
+
+      <header class="cart-page__header">
+        <div>
+          <span class="cart-page__eyebrow">{{ 'cart.eyebrow' | translate }}</span>
+          <h1 class="cart-page__title">{{ 'cart.title' | translate }}</h1>
+        </div>
+
+        <p class="cart-page__count">
+          {{ cartCount }}
+          {{
+            (cartCount === 1 ? 'cart.item' : 'cart.items') | translate
+          }}
+        </p>
+      </header>
+
+      <div class="cart-page__shipping">
+        <i class="pi pi-truck"></i>
+        <span>{{ 'cart.shippingInfo' | translate }}</span>
       </div>
-      <div class="cart-shipping">
-        Shipping after the payment , Delivery time 3-7 working days.
-      </div>
-      <div class="cart-item" *ngFor="let cartItem of cartItemsDetails" >
-        <div class="grid">
-          <div class="col-2 cart-item-image">
+
+      <div class="cart-page__items" *ngIf="cartItemsDetails.length; else emptyCart">
+        <article
+          class="cart-item"
+          *ngFor="let cartItem of cartItemsDetails; trackBy: trackByProductId"
+        >
+          <a
+            class="cart-item__image-link"
+            [routerLink]="['/products', cartItem.product.product.id]"
+          >
             <img
-            [ngStyle]="{'height': getScreenWidth<550?'75px':'120px' }"
+              class="cart-item__image"
               [src]="cartItem.product.product.image"
               [attr.alt]="cartItem.product.product.name"
-              [routerLink]="'/products/' + cartItem.product.product.id"
             />
-          </div>
-          <div class="col-5">
-            <div class="cart-item-name" [routerLink]="'/products/' + cartItem.product.product.id">
-              {{ cartItem.product.product.name }}
-            </div>
-            <div class="cart-item-price">
-              {{ cartItem.product.product.price | currency  }}
-            </div>
-            <div class="cart-item-remove">
-              <p-button
-                icon="pi pi-trash"
-                (onClick)="deleteCartItem(cartItem.product)"
-              ></p-button>
-            </div>
-          </div>
-          <div class="col-5">
-            <div class="field cart-item-quantity p-fluid">
-              <p-inputNumber
-                mode="decimal"
-                [showButtons]="true"
-                [inputId]="cartItem.product.product.id"
-                [min]="1"
-                [max]="100"
-                [(ngModel)]="cartItem.quantity"
-                (onInput)="updateCartItemQuantity($event, cartItem.product)"
-              >
-              </p-inputNumber>
-            </div>
-            <div class="cart-item-subtotal">
-              Subtotal :
-              <span class="cart-item-subtotal-value">
-                {{
-                  cartItem.product.product.price * cartItem.quantity
-                    | currency 
-                }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+          </a>
 
-    <!-- 4 -->
-    <div class="col-4"><ng-shop-order-summary></ng-shop-order-summary></div>
+          <div class="cart-item__details">
+            <div class="cart-item__main">
+              <a
+                class="cart-item__name"
+                [routerLink]="['/products', cartItem.product.product.id]"
+              >
+                {{ cartItem.product.product.name }}
+              </a>
+
+              <p class="cart-item__price">
+                {{ cartItem.product.product.price | currency }}
+              </p>
+            </div>
+
+            <div class="cart-item__actions">
+              <div class="field cart-item__quantity">
+                <label
+                  class="cart-item__quantity-label"
+                  [for]="'qty-' + cartItem.product.product.id"
+                >
+                  {{ 'product.quantity' | translate }}
+                </label>
+
+                <p-inputNumber
+                  mode="decimal"
+                  [showButtons]="true"
+                  [inputId]="'qty-' + cartItem.product.product.id"
+                  [min]="1"
+                  [max]="100"
+                  [(ngModel)]="cartItem.quantity"
+                  (onInput)="updateCartItemQuantity($event, cartItem.product)"
+                >
+                </p-inputNumber>
+              </div>
+
+              <div class="cart-item__footer">
+                <div class="cart-item__subtotal">
+                  <span class="cart-item__subtotal-label">{{ 'cart.subtotal' | translate }}</span>
+                  <span class="cart-item__subtotal-value">
+                    {{
+                      cartItem.product.product.price * cartItem.quantity
+                        | currency
+                    }}
+                  </span>
+                </div>
+
+                <p-button
+                  [label]="'buttons.remove' | translate"
+                  icon="pi pi-trash"
+                  styleClass="p-button-text p-button-danger cart-item__remove-button"
+                  (onClick)="deleteCartItem(cartItem.product)"
+                ></p-button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <ng-template #emptyCart>
+        <div class="cart-page__empty-state">
+          <i class="pi pi-shopping-cart cart-page__empty-icon"></i>
+          <h2>{{ 'cart.emptyTitle' | translate }}</h2>
+          <p>{{ 'cart.emptyDescription' | translate }}</p>
+          <p-button
+            [label]="'buttons.browseProducts' | translate"
+            icon="pi pi-arrow-right"
+            styleClass="cart-page__browse-button"
+            (onClick)="backToShop()"
+          ></p-button>
+        </div>
+      </ng-template>
+    </section>
+
+    <aside class="cart-page__summary">
+      <ng-shop-order-summary></ng-shop-order-summary>
+    </aside>
   </div>
 </div>

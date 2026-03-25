@@ -1,4 +1,14 @@
-<ul class="nav  " style="display: flex;">
-    <li><a href=""routerLink="/">Home</a></li>
-    <li><a href="" routerLink="/products">Products</a></li>
-</ul>
+<nav class="shop-nav" aria-label="Primary navigation">
+  <a
+    class="shop-nav__link"
+    routerLink="/"
+    routerLinkActive="is-active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    (click)="onLinkClick()"
+  >
+    {{ 'nav.home' | translate }}
+  </a>
+  <a class="shop-nav__link" routerLink="/products" routerLinkActive="is-active" (click)="onLinkClick()">
+    {{ 'nav.products' | translate }}
+  </a>
+</nav>

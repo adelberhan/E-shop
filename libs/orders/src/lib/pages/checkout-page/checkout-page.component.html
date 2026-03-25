@@ -1,126 +1,122 @@
-<div class="checkout-page">
-  <div>
+<section class="checkout-page">
+  <div class="checkout-page__topbar">
     <p-button
-      label="Back to cart"
+      [label]="'buttons.backToCart' | translate"
       icon="pi pi-arrow-left"
+      styleClass="p-button-outlined checkout-page__back-button"
       (onClick)="bacToCart()"
-    >
-    </p-button>
+    ></p-button>
   </div>
-  <div class="grid checkout-form">
-    <div class="col-8">
-      <form [formGroup]="checkoutFormGroup">
-        <div class="fluid formgrid grid">
-          <div class="fluid col-4">
-            <label for="name">Name</label>
+
+  <div class="checkout-page__layout">
+    <section class="checkout-page__content">
+      <header class="checkout-page__header">
+        <span class="checkout-page__eyebrow">{{ 'checkout.eyebrow' | translate }}</span>
+        <h1 class="checkout-page__title">{{ 'checkout.title' | translate }}</h1>
+        <p class="checkout-page__subtitle">
+          {{ 'checkout.subtitle' | translate }}
+        </p>
+      </header>
+
+      <form class="checkout-form" [formGroup]="checkoutFormGroup" (ngSubmit)="placeOrder()">
+        <div class="checkout-form__grid">
+          <div class="checkout-form__field checkout-form__field--half">
+            <label for="name">{{ 'checkout.fullName' | translate }}</label>
             <input formControlName="name" id="name" type="text" pInputText />
-            <small
-              *ngIf="checkoutForm.name.invalid && isSubmitted"
-              class="p-error"
-              >Name is required</small
-            >
+            <small *ngIf="checkoutForm.name.invalid && isSubmitted" class="p-error">
+              {{ 'validation.nameRequired' | translate }}
+            </small>
           </div>
-          <div class="fluid col-4">
-            <label for="email">Email</label>
-            <input formControlName="email" id="email" type="text" pInputText />
-            <small
-              *ngIf="checkoutForm.email.invalid && isSubmitted"
-              class="p-error"
-              ><span *ngIf="checkoutForm.email.errors.required"
-                >email is required</span
-              >
-              <span *ngIf="checkoutForm.email.errors.email"
-                >email is invalid</span
-              ></small
-            >
+
+          <div class="checkout-form__field checkout-form__field--half">
+            <label for="email">{{ 'checkout.emailAddress' | translate }}</label>
+            <input formControlName="email" id="email" type="email" pInputText />
+            <small *ngIf="checkoutForm.email.invalid && isSubmitted" class="p-error">
+              <span *ngIf="checkoutForm.email.errors.required">{{ 'validation.emailRequired' | translate }}</span>
+              <span *ngIf="checkoutForm.email.errors.email">{{ 'validation.emailInvalid' | translate }}</span>
+            </small>
           </div>
-          <div class="fluid col-4">
-            <label for="color">Phone</label><br />
+
+          <div class="checkout-form__field checkout-form__field--half">
+            <label for="phone">{{ 'checkout.phoneNumber' | translate }}</label>
             <p-inputMask
+              inputId="phone"
               mask="(999) 999-9999"
               formControlName="phone"
               placeholder="(999) 999-9999"
             ></p-inputMask>
-            <small
-              *ngIf="checkoutForm.phone.invalid && isSubmitted"
-              class="p-error"
-              >phone is required</small
-            >
+            <small *ngIf="checkoutForm.phone.invalid && isSubmitted" class="p-error">
+              {{ 'validation.phoneRequired' | translate }}
+            </small>
           </div>
-        </div>
-        <div class="fluid formgrid grid">
-          <div class="fluid col-4">
-            <label for="street">Street</label>
-            <input
-              formControlName="street"
-              id="street"
-              type="text"
-              pInputText
-            />
-            <small
-              *ngIf="checkoutForm.street.invalid && isSubmitted"
-              class="p-error"
-              >Street is required</small
-            >
-          </div>
-          <div class="fluid col-4">
-            <label for="street">Apartment</label>
-            <input
-              formControlName="apartment"
-              id="apartment"
-              type="text"
-              pInputText
-            />
-            <small
-              *ngIf="checkoutForm.apartment.invalid && isSubmitted"
-              class="p-error"
-              >Apartment is required</small
-            >
-          </div>
-          <div class="fluid col-4">
-            <label for="street">Zip Code</label>
-            <input formControlName="zip" id="zip" type="text" pInputText />
-            <small
-              *ngIf="checkoutForm.zip.invalid && isSubmitted"
-              class="p-error"
-              >Zip is required</small
-            >
-          </div>
-          <div class="fluid col-4">
-            <label for="city">City</label>
-            <input formControlName="city" id="city" type="text" pInputText />
-            <small
-              *ngIf="checkoutForm.city.invalid && isSubmitted"
-              class="p-error"
-              >City is required</small
-            >
-          </div>
-          <div class="fluid col-4">
-            <label for="country">Country</label><br />
+
+          <div class="checkout-form__field checkout-form__field--half">
+            <label for="country">{{ 'checkout.country' | translate }}</label>
             <p-dropdown
               [options]="country"
-                formControlName="country"
-                optionLabel="name"
-                optionValue="id"
-                [filter]="true"
-                filterBy="name"
-                [showClear]="true"
-                placeholder="Select a Country"
+              formControlName="country"
+              optionLabel="name"
+              optionValue="id"
+              [filter]="true"
+              filterBy="name"
+              [showClear]="true"
+              [placeholder]="'checkout.selectCountry' | translate"
             ></p-dropdown>
-            <small
-              *ngIf="checkoutForm.country.invalid && isSubmitted"
-              class="p-error"
-              >Country is required</small
-            >
+            <small *ngIf="checkoutForm.country.invalid && isSubmitted" class="p-error">
+              {{ 'validation.countryRequired' | translate }}
+            </small>
+          </div>
+
+          <div class="checkout-form__field checkout-form__field--full">
+            <label for="street">{{ 'checkout.streetAddress' | translate }}</label>
+            <input formControlName="street" id="street" type="text" pInputText />
+            <small *ngIf="checkoutForm.street.invalid && isSubmitted" class="p-error">
+              {{ 'validation.streetRequired' | translate }}
+            </small>
+          </div>
+
+          <div class="checkout-form__field checkout-form__field--half">
+            <label for="apartment">{{ 'checkout.apartment' | translate }}</label>
+            <input formControlName="apartment" id="apartment" type="text" pInputText />
+            <small *ngIf="checkoutForm.apartment.invalid && isSubmitted" class="p-error">
+              {{ 'validation.apartmentRequired' | translate }}
+            </small>
+          </div>
+
+          <div class="checkout-form__field checkout-form__field--half">
+            <label for="city">{{ 'checkout.city' | translate }}</label>
+            <input formControlName="city" id="city" type="text" pInputText />
+            <small *ngIf="checkoutForm.city.invalid && isSubmitted" class="p-error">
+              {{ 'validation.cityRequired' | translate }}
+            </small>
+          </div>
+
+          <div class="checkout-form__field checkout-form__field--half">
+            <label for="zip">{{ 'checkout.zipCode' | translate }}</label>
+            <input formControlName="zip" id="zip" type="text" pInputText />
+            <small *ngIf="checkoutForm.zip.invalid && isSubmitted" class="p-error">
+              {{ 'validation.zipRequired' | translate }}
+            </small>
           </div>
         </div>
       </form>
-    </div>
-    <div class="col-4">
-      <ng-shop-order-summary></ng-shop-order-summary>
-      <div class="checkout-button">
-        <p-button label="Place Order" (onClick)="placeOrder()"></p-button>
+    </section>
+
+    <aside class="checkout-page__summary">
+      <div class="checkout-page__summary-card">
+        <ng-shop-order-summary></ng-shop-order-summary>
+
+        <div class="checkout-page__secure-note">
+          <i class="pi pi-shield"></i>
+          <span>{{ 'checkout.secureNote' | translate }}</span>
+        </div>
+
+        <p-button
+          [label]="'buttons.placeOrder' | translate"
+          styleClass="checkout-page__submit-button"
+          (onClick)="placeOrder()"
+        ></p-button>
       </div>
-    </div>
+    </aside>
   </div>
-</div>
+</section>

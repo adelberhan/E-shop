@@ -14,6 +14,7 @@ import { ProductPageComponent } from './pages/product-page/product-page.componen
 import { RatingModule } from 'primeng/rating';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { UiModule } from '@ng-shop/ui';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
@@ -40,7 +41,9 @@ const routes: Routes = [
     CheckboxModule,
     FormsModule,
     RatingModule,
-    InputNumberModule, UiModule,
+    InputNumberModule,
+    UiModule,
+    TranslateModule,
     // NgStyle,
   ],
   declarations: [

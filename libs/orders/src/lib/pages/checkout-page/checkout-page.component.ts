@@ -15,7 +15,7 @@ declare const require;
 @Component({
   selector: 'ng-shop-checkout-page',
   templateUrl: './checkout-page.component.html',
-  styles: [],
+  styleUrls: ['./checkout-page.component.scss'],
 })
 export class CheckoutPageComponent implements OnInit, OnDestroy {
   constructor(

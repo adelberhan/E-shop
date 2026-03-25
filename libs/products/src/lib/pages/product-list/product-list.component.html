@@ -1,31 +1,101 @@
-<div class="product-page">
-  <div class="grid">
-    <div class="col-3" *ngIf="!isCategoryPage">
-      <h4>Categories</h4>
-      <div class="field-checkbox" *ngFor="let category of categories">
-        <p-checkbox
-          [(ngModel)]="category.checked"
-          [binary]="true"
-          [inputId]="category.id"
-          (onChange)="categoryFilter()"
-        ></p-checkbox>
-        <label for="{{ category.id }}">{{ category.name }}</label>
-      </div>
-    </div>
-    <div [ngClass]="{ 'col-9': !isCategoryPage, 'col-12': isCategoryPage }">
-      <div class="grid">
+<section class="product-list-page">
+  <div class="product-list-page__layout">
+    <aside class="product-list-page__sidebar" *ngIf="!isCategoryPage">
+      <div class="product-filters">
+        <div class="product-filters__header">
+          <div class="product-filters__heading">
+            <span class="product-filters__eyebrow">{{ 'filters.browseBy' | translate }}</span>
+            <h2 class="product-filters__title">{{ 'filters.categories' | translate }}</h2>
+          </div>
+
+          <button
+            type="button"
+            class="product-filters__toggle"
+            (click)="toggleCategories()"
+            [attr.aria-expanded]="isCategoriesOpen"
+            aria-controls="product-filters-list"
+          >
+            <span>{{
+              isCategoriesOpen
+                ? ('filters.close' | translate)
+                : ('filters.open' | translate)
+            }}</span>
+            <i
+              class="pi"
+              [ngClass]="isCategoriesOpen ? 'pi-chevron-up' : 'pi-chevron-down'"
+            ></i>
+          </button>
+        </div>
+
         <div
-          [ngClass]="{
-            'col-4 ': !isCategoryPage && getScreenWidth > 700,'col-12 ': !isCategoryPage && getScreenWidth < 700,
-
-            'col-6': isCategoryPage&& getScreenWidth > 700
-
-          }"
-          *ngFor="let product of products"
+          id="product-filters-list"
+          class="product-filters__list"
+          *ngIf="isCategoriesOpen && categories.length; else noCategories"
         >
+          <label class="product-filters__item" *ngFor="let category of categories">
+            <p-checkbox
+              [(ngModel)]="category.checked"
+              [binary]="true"
+              [inputId]="category.id"
+              (onChange)="categoryFilter()"
+            ></p-checkbox>
+            <span>{{ category.name }}</span>
+          </label>
+        </div>
+
+        <ng-template #noCategories>
+          <p class="product-filters__empty">
+            {{
+              isCategoriesOpen
+                ? ('filters.categoriesSoon' | translate)
+                : ('filters.openToChoose' | translate)
+            }}
+          </p>
+        </ng-template>
+      </div>
+    </aside>
+
+    <div
+      class="product-list-page__content "
+      [class.product-list-page__content--category]="isCategoryPage"
+    >
+      <header class="product-list-page__header">
+        <div>
+          <span class="product-list-page__eyebrow">{{ 'products.catalog' | translate }}</span>
+          <h1 class="product-list-page__title">
+            {{
+              isCategoryPage
+                ? ('products.categoryPageTitle' | translate)
+                : ('products.discoverTitle' | translate)
+            }}
+          </h1>
+        </div>
+
+        <!-- <p class="product-list-page__count">
+          {{ products.length }} product<span *ngIf="products.length !== 1">s</span>
+        </p> -->
+      </header>
+
+      <div
+        class="product-list-grid"
+        [ngClass]="{
+          'product-list-grid--category': isCategoryPage,
+          'product-list-grid--catalog': !isCategoryPage
+        }"
+        *ngIf="products.length; else emptyProducts"
+      >
+        <div class="product-list-grid__item" *ngFor="let product of products">
           <products-product-item [product]="product"></products-product-item>
         </div>
       </div>
+
+      <ng-template #emptyProducts>
+        <div class="product-list-page__empty-state">
+          <i class="pi pi-inbox"></i>
+          <h3>{{ 'products.emptyTitle' | translate }}</h3>
+          <p>{{ 'products.emptyDescription' | translate }}</p>
+        </div>
+      </ng-template>
     </div>
   </div>
-</div>
+</section>

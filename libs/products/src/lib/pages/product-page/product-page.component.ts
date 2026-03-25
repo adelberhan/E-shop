@@ -10,7 +10,7 @@ import { CartService } from '../../../../../orders/src/lib/services/cart.service
 @Component({
   selector: 'products-product-page',
   templateUrl: './product-page.component.html',
-  styles: [],
+  styleUrls: ['./product-page.component.scss'],
 })
 export class ProductPageComponent implements OnInit, OnDestroy {
   productId: string;

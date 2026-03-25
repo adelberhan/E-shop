@@ -1,22 +1,36 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { User } from '@ng-shop/users';
+import { Component, HostListener } from '@angular/core';
+import { Observable } from 'rxjs';
+import { LanguageCode, LanguageService } from '../services/language.service';
 
 @Component({
   selector: 'ng-shop-header',
   templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  constructor() {}
-  user: User;
+export class HeaderComponent {
+  isNavOpen = false;
+  currentLanguage$: Observable<LanguageCode>;
 
-  public getScreenWidth: any;
+  constructor(private languageService: LanguageService) {
+    this.currentLanguage$ = this.languageService.currentLanguage$;
+  }
 
-  ngOnInit() {
-    this.getScreenWidth = window.innerWidth;
+  toggleNav(): void {
+    this.isNavOpen = !this.isNavOpen;
+  }
+
+  toggleLanguage(): void {
+    this.languageService.toggleLanguage();
+  }
+
+  closeNav(): void {
+    this.isNavOpen = false;
   }
 
   @HostListener('window:resize', ['$event'])
-  onWindowResize() {
-    this.getScreenWidth = window.innerWidth;
+  onWindowResize(): void {
+    if (window.innerWidth >= 992) {
+      this.closeNav();
+    }
   }
 }

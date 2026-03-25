@@ -19,20 +19,22 @@
 
 //shared
 @import './apps/shop/shared/footer.scss';
-@import './apps/shop/shared/header.scss';
-@import './apps/shop/shared/nav.scss';
 
 //Libs
 @import './libs/products/products.scss';
 @import './libs/orders/orders.scss';
 @import './libs/ui/ui.scss';
 
+:root {
+  --brand-primary: #ff3a00;
+}
+
 .container {
   max-width: 90%;
   padding: 20px;
   margin: 0 auto;
   background-color: var(--surface-200);
-  line-height: 0px;
+  line-height: 1.5;
 }
 body {
   margin: 0;

@@ -1,0 +1,19 @@
+@import '../../../../../../styles/base/colors.scss';
+
+:host {
+  display: block;
+}
+
+footer .nav-link {
+  color: var(--surface-500);
+  transition: color 0.2s ease;
+}
+
+footer .nav-link:hover,
+footer .nav-link:focus {
+  color: $primary-color;
+}
+
+footer .nav-link .pi {
+  font-size: 1.15rem;
+}

@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Product } from '../../models/product';
 import { Subject, takeUntil } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
@@ -9,20 +9,14 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'product-list',
   templateUrl: './product-list.component.html',
-  styles: [],
+  styleUrls: ['./product-list.component.scss'],
 })
 export class ProductListComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   categories: Category[] = [];
   categoryId: string[];
   isCategoryPage: boolean;
-  getScreenWidth: any;
-
-   @HostListener('window:resize', ['$event'])
-  onWindowResize() {
-    this.getScreenWidth = window.innerWidth;
-   
-  }
+  isCategoriesOpen = true;
 
   endSubs$: Subject<any> = new Subject();
   constructor(
@@ -32,8 +26,6 @@ export class ProductListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-          this.getScreenWidth = window.innerWidth;
-
     this.route.params.subscribe((params) => {
       this.categoryId = params['categoryId'];
       this.categoryId
@@ -74,5 +66,9 @@ export class ProductListComponent implements OnInit, OnDestroy {
       .map((category) => category.id);
 
     this._getProducts(selectedCategories);
+  }
+
+  toggleCategories() {
+    this.isCategoriesOpen = !this.isCategoriesOpen;
   }
 }

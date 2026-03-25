@@ -1,15 +1,14 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { OrdersService } from '../../services/order.service';
-import { CartItem, CartItemDetails } from '../../models/cart';
+import { CartItemDetails } from '../../models/cart';
 import { Subject, takeUntil } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'orders-cart-page',
   templateUrl: './cart-page.component.html',
-  styles: [],
+  styleUrls: ['./cart-page.component.scss'],
 })
 export class CartPageComponent implements OnInit, OnDestroy {
   cartItemsDetails: CartItemDetails[] = [];
@@ -24,8 +23,6 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._getCartDetails();
-    this.getScreenWidth = window.innerWidth;
-
   }
 
   ngOnDestroy(): void {
@@ -36,8 +33,8 @@ export class CartPageComponent implements OnInit, OnDestroy {
     this.router.navigate(['/products']);
   }
 
-  deleteCartItem(cartItem: CartItemDetails) {
-    this.cartService.deleteCartItem(cartItem.product.id);
+  deleteCartItem(product: CartItemDetails['product']) {
+    this.cartService.deleteCartItem(product.id);
   }
 
   private _getCartDetails() {
@@ -70,21 +67,17 @@ export class CartPageComponent implements OnInit, OnDestroy {
   //   );
   // }
 
-  updateCartItemQuantity(event, cartItem: CartItemDetails) {
+  updateCartItemQuantity(event, product: CartItemDetails['product']) {
     this.cartService.setCartItem(
       {
-        productId: cartItem.product.id,
+        productId: product.id,
         quantity: event.value,
       },
       true
     );
   }
-  public getScreenWidth: any;
 
-
-
-  @HostListener('window:resize', ['$event'])
-  onWindowResize() {
-    this.getScreenWidth = window.innerWidth;
+  trackByProductId(index: number, cartItem: CartItemDetails) {
+    return cartItem.product?.product?.id || cartItem.product?.id || index;
   }
 }

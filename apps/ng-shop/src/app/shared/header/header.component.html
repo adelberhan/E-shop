@@ -1,20 +1,41 @@
 <ng-shop-messages></ng-shop-messages>
-<header>
-  <div class="grid mb-4">
-    <div class="col-3 w-100">
-      <div class="logo">
-        <a href="" routerLink="/">
-          <img [ngStyle]="{'max-width':getScreenWidth<600?'100px':'170px'}" src="assets/imgs/logo.png" alt="logo" />
-        </a>
+<header class="shop-header">
+  <div class="shop-header__bar">
+    <a
+      class="shop-header__brand"
+      routerLink="/"
+      [attr.aria-label]="'header.goHome' | translate"
+    >
+      <img class="shop-header__logo" src="assets/imgs/logo.png" alt="Ng Shop logo" />
+    </a>
+
+    <button
+      class="shop-header__toggle"
+      type="button"
+      [attr.aria-expanded]="isNavOpen"
+      aria-controls="shop-header-menu"
+      [attr.aria-label]="'header.toggleNavigation' | translate"
+      (click)="toggleNav()"
+    >
+      <i class="pi" [ngClass]="isNavOpen ? 'pi-times' : 'pi-bars'"></i>
+    </button>
+
+    <div id="shop-header-menu" class="shop-header__content" [class.is-open]="isNavOpen">
+      <ng-shop-nav (linkClick)="closeNav()"></ng-shop-nav>
+
+      <div class="shop-header__actions" (click)="closeNav()">
+        <button
+          type="button"
+          class="shop-header__language"
+          [attr.aria-label]="'header.switchLanguage' | translate"
+          (click)="toggleLanguage()"
+        >
+          <i class="pi pi-globe"></i>
+          <span>{{ ((currentLanguage$ | async) || 'en') | uppercase }}</span>
+        </button>
+
+        <order-cart-icon></order-cart-icon>
       </div>
-    </div>
-    <!-- <div class="col-4 search"><product-search></product-search></div> -->
-    <div class="col-3 col-offset-1 d-flex justify-content-between align-items-center
- "><ng-shop-nav></ng-shop-nav></div>
-    <div class="col-3"></div>
-    <div class="col-2 tools ">
-      <!-- <i  class="pi pi-sign-out p-text-secondary mr-2 " style="font-size: 1.5rem"></i> -->
-      <order-cart-icon></order-cart-icon>
     </div>
   </div>
 </header>

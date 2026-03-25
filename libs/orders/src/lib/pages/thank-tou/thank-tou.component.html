@@ -1,7 +1,7 @@
 <div class="checkout-page">
     <div class="thankyou-page">
-        <h2>Thank you for shopping with us</h2>
-        <h3> Your order will delivered in 3 working days </h3>
-        <p-button label="Back to shop" routerLink="/"></p-button>
+        <h2>{{ 'thankYou.title' | translate }}</h2>
+        <h3>{{ 'thankYou.subtitle' | translate }}</h3>
+        <p-button [label]="'buttons.backToShop' | translate" routerLink="/"></p-button>
     </div>
 </div>

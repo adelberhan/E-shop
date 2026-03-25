@@ -1,66 +1,66 @@
-<div class="product-page" *ngIf="product">
-  <div class="grid">
-    <div class="col-6">
-      <ui-gallery [imgs]="product.images"></ui-gallery>
-    </div>
-    <div class="col-6 product">
-      <h2 class="product-name">{{ product.name }}</h2>
-      <div>
-        <p class="product-desc">
-          {{ product.description }}
-        </p>
+<section class="product-page" *ngIf="product">
+  <div class="product-page__shell">
+    <div class="product-page__hero">
+      <div class="product-page__gallery">
+        <ui-gallery [imgs]="product.images"></ui-gallery>
       </div>
 
-      <div class="product-rating">
-        <p-rating
-          [(ngModel)]="product.rating"
-          [cancel]="false"
-          [disabled]="true"
-        ></p-rating>
-      </div>
-      <div class="product-price">
-        {{ product.price | currency  }}
-        <span class="price-before">
-          {{ product.price + 22 | currency  }}
-        </span>
-      </div>
-      <div class="product-quantity">
-        <label for="quantity">Quantity</label>
+      <div class="product-page__summary">
+        <span class="product-page__eyebrow">{{ 'product.details' | translate }}</span>
+        <h1 class="product-page__title">{{ product.name }}</h1>
+        <p class="product-page__description">{{ product.description }}</p>
 
-        <div class="field col-12 mt-2">
+        <div class="product-page__rating">
+          <p-rating
+            [(ngModel)]="product.rating"
+            [cancel]="false"
+            [disabled]="true"
+          ></p-rating>
+        </div>
+
+        <div class="product-page__price">
+          <span class="product-page__price-current">{{ product.price | currency }}</span>
+          <span class="product-page__price-before">
+            {{ product.price + 22 | currency }}
+          </span>
+        </div>
+
+        <div class="product-page__quantity">
+          <label for="quantity">{{ 'product.quantity' | translate }}</label>
           <p-inputNumber
             [(ngModel)]="quantity"
             mode="decimal"
             [showButtons]="true"
-            inputId="minmax-buttons"
+            inputId="quantity"
             [min]="1"
             [max]="100"
           >
           </p-inputNumber>
         </div>
-      </div>
-      <div class="product-action">
-        <button
-          pButton
-          pRipple
-          label="Buy Now"
-          routerLink="/checkout"
-          (click)="addToCart()"
-          class="p-button-Primary mr-2"
-        ></button>
-        <button
-          pButton
-          pRipple
-          label="Add to cart"
-          class="p-button-Primary"
-          (click)="addToCart()"
-        ></button>
-      </div>
-    </div>
-    <div class="grid product-rich-desc">
-      <div class="col-12">
-        <div [innerHTML]="product.richDescription"></div>
+
+        <div class="product-page__actions">
+          <button
+            pButton
+            pRipple
+            [label]="'buttons.buyNow' | translate"
+            routerLink="/checkout"
+            (click)="addToCart()"
+            class="product-page__button product-page__button--primary"
+          ></button>
+          <button
+            pButton
+            pRipple
+            [label]="'buttons.addToCart' | translate"
+            (click)="addToCart()"
+            class="product-page__button product-page__button--secondary"
+          ></button>
+        </div>
       </div>
     </div>
+
+    <section class="product-page__details" *ngIf="product.richDescription">
+      <h2>{{ 'product.about' | translate }}</h2>
+      <div class="product-page__rich-content" [innerHTML]="product.richDescription"></div>
+    </section>
   </div>
-</div>
+</section>

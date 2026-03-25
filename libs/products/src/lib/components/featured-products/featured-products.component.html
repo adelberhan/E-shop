@@ -1,7 +1,7 @@
 <div class="featured-products">
-  <h3>Featured Products</h3>
-  <div class="grid">
-    <div class="col-3" *ngFor="let product of products | async">
+  <h3>{{ 'featured.title' | translate }}</h3>
+  <div class="featured-products__grid">
+    <div class="featured-products__item" *ngFor="let product of products | async">
       <products-product-item [product]="product"></products-product-item>
     </div>
   </div>

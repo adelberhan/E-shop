@@ -5,6 +5,7 @@ import {
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
   Router,
+  UrlTree,
 } from '@angular/router';
 
 @Injectable({
@@ -15,21 +16,39 @@ export class AuthGuard implements CanActivate {
     private router: Router,
     private localStorageService: LocalStorageService
   ) {}
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const token = this.localStorageService.getToken();
-    if (token) {
-      const tokenDecode = JSON.parse(atob(token.split('.')[1]));
-      if (tokenDecode.isAdmin && !this.token_exp(tokenDecode.exp)) {
-        return true;
-        // console.log(tokenDecode)
-      }
-    }
-    this.router.navigate(['/login']);
 
-    return false;
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | UrlTree {
+    const token = this.localStorageService.getToken();
+
+    if (!token) {
+      return this.getLoginUrlTree(state.url);
+    }
+
+    try {
+      const tokenDecode = JSON.parse(atob(token.split('.')[1]));
+      const isTokenExpired = this.token_exp(tokenDecode.exp);
+      const adminOnly = route.data?.adminOnly === true;
+
+      if (!isTokenExpired && (!adminOnly || tokenDecode.isAdmin)) {
+        return true;
+      }
+    } catch (error) {
+      this.localStorageService.removeToken();
+    }
+
+    return this.getLoginUrlTree(state.url);
   }
 
   private token_exp(exp: number): boolean {
     return Math.floor(new Date().getTime() / 1000) >= exp;
+  }
+
+  private getLoginUrlTree(returnUrl: string): UrlTree {
+    return this.router.createUrlTree(['/login'], {
+      queryParams: { returnUrl },
+    });
   }
 }

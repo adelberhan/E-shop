@@ -1,0 +1,166 @@
+@import '../../../../../../styles/base/colors.scss';
+
+:host {
+  display: block;
+}
+
+.checkout-page {
+  min-height: 500px;
+  padding: 1rem 0 2rem;
+}
+
+.checkout-page__topbar {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.checkout-page__layout {
+  display: grid;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.checkout-page__content,
+.checkout-page__summary {
+  min-width: 0;
+}
+
+.checkout-page__header {
+  margin-bottom: 1.25rem;
+}
+
+.checkout-page__eyebrow {
+  display: inline-block;
+  margin-bottom: 0.35rem;
+  color: var(--surface-600);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.checkout-page__title,
+.checkout-page__subtitle {
+  margin: 0;
+}
+
+.checkout-page__title {
+  color: var(--surface-900);
+  font-size: clamp(1.7rem, 4vw, 2.35rem);
+  line-height: 1.15;
+}
+
+.checkout-page__subtitle {
+  margin-top: 0.75rem;
+  color: var(--surface-600);
+  line-height: 1.6;
+}
+
+.checkout-form {
+  padding: 1rem;
+  border: 1px solid var(--surface-200);
+  border-radius: 1.25rem;
+  background: var(--surface-0);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+}
+
+.checkout-form__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.checkout-form__field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.checkout-form__field label {
+  color: var(--surface-800);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.checkout-page__summary-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.checkout-page__secure-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.95rem 1rem;
+  border-radius: 1rem;
+  background: var(--surface-50);
+  color: var(--surface-700);
+  line-height: 1.5;
+}
+
+.checkout-page__secure-note i {
+  margin-top: 0.1rem;
+  color: $primary-color;
+}
+
+:host ::ng-deep .checkout-form .p-inputtext,
+:host ::ng-deep .checkout-form .p-inputmask,
+:host ::ng-deep .checkout-form .p-dropdown {
+  width: 100%;
+}
+
+:host ::ng-deep .checkout-form .p-inputtext,
+:host ::ng-deep .checkout-form .p-inputmask input,
+:host ::ng-deep .checkout-form .p-dropdown .p-dropdown-label {
+  min-height: 3rem;
+}
+
+:host ::ng-deep .checkout-page__submit-button.p-button,
+:host ::ng-deep .checkout-page__back-button.p-button {
+  width: 100%;
+  justify-content: center;
+}
+
+:host ::ng-deep .checkout-page__submit-button.p-button {
+  min-height: 3.25rem;
+  border: 0;
+  border-radius: 0.95rem;
+  background: $primary-color;
+}
+
+:host ::ng-deep .checkout-page__submit-button.p-button:enabled:hover {
+  background: $primary-color-dark;
+}
+
+@media (min-width: 768px) {
+  .checkout-page {
+    padding-top: 1.5rem;
+  }
+
+  .checkout-form {
+    padding: 1.25rem;
+  }
+
+  .checkout-form__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .checkout-form__field--full {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 992px) {
+  .checkout-page__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(19rem, 24rem);
+    gap: 2rem;
+  }
+
+  .checkout-page__summary {
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  :host ::ng-deep .checkout-page__back-button.p-button {
+    width: auto;
+  }
+}

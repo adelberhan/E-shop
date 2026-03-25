@@ -1,4 +1,5 @@
-import { Component, HostListener } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ui-banner',
@@ -6,17 +7,9 @@ import { Component, HostListener } from '@angular/core';
   styles: [],
 })
 export class BannerComponent {
-  public getScreenWidth: any;
-  public getScreenHeight: any;
+  constructor(private router: Router) {}
 
-  ngOnInit() {
-    this.getScreenWidth = window.innerWidth;
-   
-  }
-
-  @HostListener('window:resize', ['$event'])
-  onWindowResize() {
-    this.getScreenWidth = window.innerWidth;
-   
+  goToProducts() {
+    this.router.navigate(['/products']);
   }
 }

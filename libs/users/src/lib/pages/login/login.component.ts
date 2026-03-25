@@ -1,28 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UsersService } from '../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LocalStorageService } from '../../services/localstorge.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'users-login',
   templateUrl: './login.component.html',
-  styles: [],
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   loginFormGroup: FormGroup;
   isSubmitted = false;
   authError = false;
-  authMessage = 'Email or password are invalid';
+  authMessage = 'login.errors.invalidCredentials';
   constructor(
     private formBuilder: FormBuilder,
     private localStorageService: LocalStorageService,
     private router: Router,
+    private route: ActivatedRoute,
     private auth: AuthService,
-
   ) {}
+
   ngOnInit(): void {
     this._initLoginForm();
   }
@@ -43,17 +43,23 @@ export class LoginComponent implements OnInit {
       (user) => {
         this.authError = false;
         this.localStorageService.setToken(user.token);
-        this.router.navigate(['/']);
+        this.router.navigateByUrl(this._getReturnUrl());
       },
       (error: HttpErrorResponse) => {
         this.authError = true;
+        this.authMessage = 'login.errors.invalidCredentials';
         if (error.status !== 400) {
-          this.authMessage = 'Error in the Server, please try again later!';
+          this.authMessage = 'login.errors.server';
         }
       }
     );
   }
   get loginForm() {
     return this.loginFormGroup.controls;
+  }
+
+  private _getReturnUrl(): string {
+    const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+    return returnUrl.startsWith('/') ? returnUrl : '/';
   }
 }

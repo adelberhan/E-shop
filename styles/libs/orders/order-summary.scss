@@ -1,22 +1,32 @@
 .order-summary {
   background-color: var(--surface-0);
-  padding: 15px;
+  padding: 1rem;
   border: 1px solid var(--surface-200);
+  border-radius: 1.25rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
 
-  h3{
+  h3 {
+    margin: 0 0 1rem;
+    color: var(--surface-900);
     text-align: center;
+    font-size: 1.25rem;
   }
- 
 
   .summary-price {
     display: flex;
-    margin: 15px 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 0.9rem 0;
+
     span {
       display: block;
-      width: 80%;
+      color: var(--surface-700);
+      line-height: 1.5;
 
       &:last-child {
-        width: 40%;
+        text-align: right;
+        color: var(--surface-900);
         font-weight: 600;
       }
 
@@ -26,9 +36,23 @@
     }
   }
 
+  .to-checkout {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--surface-200);
+  }
+
   .checkout-button {
+    margin-top: 1rem;
+
     button {
       width: 100%;
     }
+  }
+}
+
+@media (min-width: 768px) {
+  .order-summary {
+    padding: 1.25rem;
   }
 }

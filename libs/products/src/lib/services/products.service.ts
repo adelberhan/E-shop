@@ -49,8 +49,16 @@ export class ProductsService {
   }
 
   getFeaturedProducts(count: number): Observable<Product[]> {
-    return this.http.get<Product[]>(
+    return this.http.get<Product[] | { products?: Product[]; product?: Product[] }>(
       `${this.apiURLProducts}/get/featured/${count}`
+    ).pipe(
+      map((response) => {
+        if (Array.isArray(response)) {
+          return response;
+        }
+
+        return response?.products || response?.product || [];
+      })
     );
   }
 }

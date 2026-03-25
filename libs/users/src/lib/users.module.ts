@@ -10,6 +10,7 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromUsers from './state/users.reducer';
 import { UsersEffects } from './state/users.effects';
 import { UsersFacade } from './state/users.facade';
+import { TranslateModule } from '@ngx-translate/core';
 const routes: Routes = [
   {
     path: 'login',
@@ -25,6 +26,7 @@ const routes: Routes = [
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
+    TranslateModule,
     StoreModule.forFeature(fromUsers.USERS_FEATURE_KEY, fromUsers.reducer),
     EffectsModule.forFeature([UsersEffects]),
   ],

@@ -1,26 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CartService } from '@ng-shop/cart';
 
 @Component({
   selector: 'order-cart-icon',
   templateUrl: './cart-icon.component.html',
-  styles: [],
+  styleUrls: ['./cart-icon.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartIconComponent implements OnInit {
-  cartCount: number = 0;
-  cartStr: string;
-  constructor(private cartService: CartService) {}
-  ngOnInit(): void {
-    // * the chartCount at this point work after refresh the page
-    // * so we gonging to obsessive it to make it se the value that
-    // * save in the internal storage without reloading the page
-    this.cartService.cart$.subscribe((cart) => {
-      this.cartCount = cart?.items.length ?? 0;
-      
-    });
+  private readonly destroyRef = inject(DestroyRef);
 
-    // this.cartCount = this.cartService.getCart().items?.length;
-    // this.cartStr = JSON.stringify(this.cartCount);
-    // console.log(this.cartStr);
+  cartCount = 0;
+
+  constructor(private cartService: CartService) {}
+
+  ngOnInit(): void {
+    this.cartService.cart$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((cart) => {
+        this.cartCount = cart?.items.length ?? 0;
+      });
   }
 }

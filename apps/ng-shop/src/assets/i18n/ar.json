@@ -1,0 +1,123 @@
+{
+  "header": {
+    "goHome": "العودة إلى الصفحة الرئيسية",
+    "toggleNavigation": "تبديل القائمة",
+    "switchLanguage": "تغيير اللغة"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "products": "المنتجات"
+  },
+  "banner": {
+    "title": "أفضل المنتجات",
+    "subtitle": "في جميع الفئات",
+    "seeMore": "شاهد المزيد"
+  },
+  "categories": {
+    "title": "الفئات"
+  },
+  "featured": {
+    "title": "المنتجات المميزة"
+  },
+  "filters": {
+    "browseBy": "تصفح حسب",
+    "categories": "الفئات",
+    "close": "إغلاق",
+    "open": "فتح",
+    "categoriesSoon": "ستظهر الفئات هنا قريبًا.",
+    "openToChoose": "افتح الفئات لاختيار فلتر."
+  },
+  "products": {
+    "catalog": "الكتالوج",
+    "categoryPageTitle": "منتجات هذه الفئة",
+    "discoverTitle": "اكتشف منتجاتنا",
+    "emptyTitle": "لم يتم العثور على منتجات",
+    "emptyDescription": "جرّب تغيير الفلاتر المحددة أو عد لاحقًا."
+  },
+  "product": {
+    "details": "تفاصيل المنتج",
+    "quantity": "الكمية",
+    "about": "حول هذا المنتج"
+  },
+  "buttons": {
+    "addToCart": "أضف إلى السلة",
+    "buyNow": "اشترِ الآن",
+    "checkout": "إتمام الشراء",
+    "continueShopping": "متابعة التسوق",
+    "remove": "إزالة",
+    "browseProducts": "تصفح المنتجات",
+    "backToCart": "العودة إلى السلة",
+    "placeOrder": "تأكيد الطلب",
+    "login": "تسجيل الدخول",
+    "backToShop": "العودة إلى المتجر"
+  },
+  "orderSummary": {
+    "title": "ملخص الطلب",
+    "itemPrice": "سعر المنتجات",
+    "shipping": "التغليف والشحن",
+    "totalPrice": "السعر الإجمالي"
+  },
+  "common": {
+    "free": "مجاني"
+  },
+  "cart": {
+    "eyebrow": "سلة التسوق",
+    "title": "سلتي",
+    "item": "منتج",
+    "items": "منتجات",
+    "shippingInfo": "يتم الشحن بعد الدفع. مدة التوصيل من 3 إلى 7 أيام عمل.",
+    "subtotal": "المجموع الفرعي",
+    "emptyTitle": "سلة التسوق فارغة",
+    "emptyDescription": "أضف بعض المنتجات إلى سلتك لتتمكن من مراجعتها هنا."
+  },
+  "checkout": {
+    "eyebrow": "الدفع",
+    "title": "معلومات الشحن",
+    "subtitle": "أدخل بيانات التوصيل لإتمام الطلب بسرعة وأمان.",
+    "fullName": "الاسم الكامل",
+    "emailAddress": "البريد الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "country": "الدولة",
+    "selectCountry": "اختر دولة",
+    "streetAddress": "عنوان الشارع",
+    "apartment": "الشقة أو الجناح وما إلى ذلك",
+    "city": "المدينة",
+    "zipCode": "الرمز البريدي",
+    "secureNote": "بيانات الدفع الخاصة بك محمية وتُستخدم فقط لمعالجة هذا الطلب."
+  },
+  "validation": {
+    "nameRequired": "الاسم مطلوب",
+    "emailRequired": "البريد الإلكتروني مطلوب",
+    "emailInvalid": "أدخل بريدًا إلكترونيًا صالحًا",
+    "phoneRequired": "رقم الهاتف مطلوب",
+    "countryRequired": "الدولة مطلوبة",
+    "streetRequired": "الشارع مطلوب",
+    "apartmentRequired": "بيانات الشقة مطلوبة",
+    "cityRequired": "المدينة مطلوبة",
+    "zipRequired": "الرمز البريدي مطلوب",
+    "passwordRequired": "كلمة المرور مطلوبة"
+  },
+  "login": {
+    "heroEyebrow": "مرحبًا بعودتك",
+    "heroTitle": "سجّل الدخول لمتابعة رحلة التسوق الخاصة بك.",
+    "heroDescription": "استعرض سلتك وأكمل الشراء بشكل أسرع وتابع طلباتك من مكان واحد.",
+    "account": "الحساب",
+    "title": "تسجيل الدخول",
+    "subtitle": "أدخل بريدك الإلكتروني وكلمة المرور للوصول إلى حسابك.",
+    "emailAddress": "البريد الإلكتروني",
+    "emailPlaceholder": "name@example.com",
+    "password": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "errors": {
+      "invalidCredentials": "البريد الإلكتروني أو كلمة المرور غير صحيحة",
+      "server": "حدث خطأ في الخادم، يرجى المحاولة مرة أخرى لاحقًا"
+    }
+  },
+  "thankYou": {
+    "title": "شكرًا لتسوقك معنا",
+    "subtitle": "سيتم توصيل طلبك خلال 3 أيام عمل"
+  },
+  "footer": {
+    "copy": "© 1994 - 2022 عادل برهان"
+  }
+}

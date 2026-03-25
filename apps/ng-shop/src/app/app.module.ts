@@ -20,6 +20,14 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { JwtInterceptor } from '@ng-shop/users';
 import { NgxStripeModule } from 'ngx-stripe';
+import {
+  TranslateLoader,
+  TranslateModule,
+} from '@ngx-translate/core';
+import {
+  TRANSLATE_HTTP_LOADER_CONFIG,
+  TranslateHttpLoader,
+} from '@ngx-translate/http-loader';
 
 const routes: Routes = [
   {
@@ -46,6 +54,13 @@ const routes: Routes = [
     UiModule,
     AccordionModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useClass: TranslateHttpLoader,
+      },
+    }),
     BrowserAnimationsModule,
     OrdersModule,
     ToastModule,
@@ -55,6 +70,13 @@ const routes: Routes = [
   ],
   providers: [
     MessageService,
+    {
+      provide: TRANSLATE_HTTP_LOADER_CONFIG,
+      useValue: {
+        prefix: './assets/i18n/',
+        suffix: '.json',
+      },
+    },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

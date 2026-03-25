@@ -17,6 +17,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ThankTouComponent } from './lib/pages/thank-tou/thank-tou.component';
 import { AuthGuard } from '../../users/src/lib/services/auth-guard';
 import { UsersModule } from '../../users/src/lib/users.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -25,7 +26,7 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
-    canActivate:[AuthGuard],
+    canActivate: [AuthGuard],
     component: CheckoutPageComponent,
   },
   {
@@ -45,7 +46,9 @@ const routes: Routes = [
     ReactiveFormsModule,
     InputTextModule,
     InputMaskModule,
-    DropdownModule,UsersModule
+    DropdownModule,
+    UsersModule,
+    TranslateModule,
   ],
   declarations: [
     CartIconComponent,
