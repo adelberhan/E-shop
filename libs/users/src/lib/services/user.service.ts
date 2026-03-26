@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root',
 })
 export class UsersService {
-  apiUserUrl = environment.apiUrl + 'users';
+  apiUserUrl = environment.apiUrl + '/users';
 
   constructor(
     private http: HttpClient,

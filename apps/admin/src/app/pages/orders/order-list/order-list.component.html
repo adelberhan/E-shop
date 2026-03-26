@@ -3,10 +3,10 @@
   <p-card header="Orders" subheader="List of all orders">
     <div class="p-grid">
       <p-table
-
+        styleClass="admin-responsive-table"
         [value]="orders"
         [tableStyle]="{ 'min-width': '10rem' }"
-        responsiveLayout="scroll | stack"
+        responsiveLayout="stack"
       >
         <ng-template pTemplate="header">
           <tr>
@@ -26,27 +26,42 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-order>
-          <tr>
-            <td>{{ order.user?.name }}</td>
-            <td>{{ order.totalPrice }}</td>
-            <td>{{ order.dateOrdered |date:'short' }}</td>
+          <tr class="admin-table-row">
             <td>
-              <p-tag [value]="orderStatus[order.status].label" [severity]="orderStatus[order.status].color"></p-tag>
+              <span class="admin-cell-label">User</span>
+              <span class="admin-cell-value">{{ order.user?.name }}</span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Total price</span>
+              <span class="admin-cell-value">{{ order.totalPrice }}</span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Date Ordered</span>
+              <span class="admin-cell-value">{{ order.dateOrdered |date:'short' }}</span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Status</span>
+              <span class="admin-cell-value">
+                <p-tag [value]="orderStatus[order.status].label" [severity]="orderStatus[order.status].color"></p-tag>
+              </span>
             </td>
 
             <td>
-              <p-button
-                icon="pi pi-trash"
-                styleClass="p-button-danger"
-                (onClick)="deleteOrder(order.id)"
-                class="mr-3"
-              ></p-button>
-              <p-button
-                icon="pi pi-eye"
-                styleClass="p-button-success"
-                (onClick)="showOrder(order.id)"
-                class=""
-              ></p-button>
+              <span class="admin-cell-label">Actions</span>
+              <span class="admin-cell-value admin-action-group">
+                <p-button
+                  icon="pi pi-trash"
+                  styleClass="p-button-danger admin-action-button"
+                  (onClick)="deleteOrder(order.id)"
+                  class="mr-3"
+                ></p-button>
+                <p-button
+                  icon="pi pi-eye"
+                  styleClass="p-button-success admin-action-button"
+                  (onClick)="showOrder(order.id)"
+                  class=""
+                ></p-button>
+              </span>
             </td>
           </tr>
         </ng-template>

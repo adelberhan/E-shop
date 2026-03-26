@@ -1,76 +1,123 @@
 <p-toast></p-toast>
 <div class="admin-page" *ngIf="order">
-  <p-card Dashboard="View order" subheader="You can edit order status here">
+  <p-card header="View order" subheader="You can edit order status here">
     <p-fieldset legend="Order Details" styleClass="mb-4" [toggleable]="true">
-      <div class="grid">
-        <div class="col-4">
-          <h5>Order Id</h5>
-          <p>{{ order.id }}</p>
+      <div class="grid admin-order-summary">
+        <div class="col-12 md:col-6 xl:col-3">
+          <div class="admin-order-card">
+            <span class="admin-order-card__label">Order Id</span>
+            <p class="admin-order-card__value admin-order-card__value--small">
+              {{ order.id }}
+            </p>
+          </div>
         </div>
-        <div class="col-4">
-          <h5>Order Date</h5>
-          <p>{{ order.dateOrdered | date : 'short' }}</p>
+        <div class="col-12 md:col-6 xl:col-3">
+          <div class="admin-order-card">
+            <span class="admin-order-card__label">Order Date</span>
+            <p class="admin-order-card__value">
+              {{ order.dateOrdered | date : 'short' }}
+            </p>
+          </div>
         </div>
-        <div class="col-4">
-          <h5>Order Status</h5>
-          <p-dropdown
-            [options]="orderStatus"
-            [(ngModel)]="selectedStatus"
-            optionValue="id"
-            styleClass="pb-1"
-            (onChange)="orderStatusChange($event)"
-            optionLabel="name"
-          ></p-dropdown>
+        <div class="col-12 md:col-6 xl:col-3">
+          <div class="admin-order-card admin-order-card--status">
+            <span class="admin-order-card__label">Order Status</span>
+            <p-dropdown
+              [options]="orderStatus"
+              [ngModel]="selectedStatus"
+              (onChange)="orderStatusChange($event)"
+              optionValue="id"
+              optionLabel="name"
+            ></p-dropdown>
+            <p class="admin-order-status-text" *ngIf="currentStatusLabel">
+              Current status: <span>{{ currentStatusLabel }}</span>
+            </p>
+          </div>
         </div>
-        <div class="col-4">
-          <h5>Order Total price</h5>
-          <p>{{ order.totalPrice | currency }}</p>
+        <div class="col-12 md:col-6 xl:col-3">
+          <div class="admin-order-card">
+            <span class="admin-order-card__label">Order Total price</span>
+            <p class="admin-order-card__value">
+              {{ order.totalPrice | currency }}
+            </p>
+          </div>
         </div>
       </div>
     </p-fieldset>
     <p-fieldset legend="Order Items" styleClass="mb-4" [toggleable]="true">
-      <div class="grid mb-5">
-        <div class="col-2 font-bold">Name</div>
-        <div class="col-2 font-bold">Brand</div>
-        <div class="col-2 font-bold">Category</div>
-        <div class="col-2 font-bold">Price</div>
-        <div class="col-2 font-bold">Quantity</div>
-        <div class="col-2 font-bold">Subtotal</div>
-      </div>
-      <div class="grid" *ngFor="let orderItem of order.orderItems">
-        <div class="col-2 mb-2">{{ orderItem.product.name }}</div>
-        <div class="col-2 mb-2">{{ orderItem.product.brand }}</div>
-        <div class="col-2 mb-2">{{ orderItem.product.category.name }}</div>
-        <div class="col-2 mb-2">{{ orderItem.product.price }}</div>
-        <div class="col-2 mb-2">{{ orderItem.quantity }}</div>
-        <div class="col-2 mb-2">
-          {{ orderItem.product.price * orderItem.quantity | currency }}
+      <div class="admin-order-items">
+        <div
+          class="admin-order-item"
+          *ngFor="let orderItem of order.orderItems"
+        >
+          <div class="admin-order-item__row">
+            <span class="admin-order-item__label">Name</span>
+            <span class="admin-order-item__value">{{
+              orderItem.product.name
+            }}</span>
+          </div>
+          <div class="admin-order-item__row">
+            <span class="admin-order-item__label">Brand</span>
+            <span class="admin-order-item__value">{{
+              orderItem.product.brand
+            }}</span>
+          </div>
+          <div class="admin-order-item__row">
+            <span class="admin-order-item__label">Category</span>
+            <span class="admin-order-item__value">{{
+              orderItem.product.category.name
+            }}</span>
+          </div>
+          <div class="admin-order-item__row">
+            <span class="admin-order-item__label">Price</span>
+            <span class="admin-order-item__value">{{
+              orderItem.product.price | currency
+            }}</span>
+          </div>
+          <div class="admin-order-item__row">
+            <span class="admin-order-item__label">Quantity</span>
+            <span class="admin-order-item__value">{{
+              orderItem.quantity
+            }}</span>
+          </div>
+          <div class="admin-order-item__row admin-order-item__row--total">
+            <span class="admin-order-item__label">Subtotal</span>
+            <span class="admin-order-item__value">
+              {{ orderItem.product.price * orderItem.quantity | currency }}
+            </span>
+          </div>
         </div>
       </div>
-      <div class="col-12" [style]="{ 'border-bottom': 'gray solid 1px' }"></div>
-
-      <div class="grid mt-3 surface-0">
-        <div class="col-2 col-offset-8 font-bold">Total Price</div>
-        <div class="col-2 font-bold mark">{{ order.totalPrice }}</div>
+      <div class="admin-order-total">
+        <span class="admin-order-total__label">Total Price</span>
+        <span class="admin-order-total__value">{{
+          order.totalPrice | currency
+        }}</span>
       </div>
     </p-fieldset>
     <p-fieldset legend="Order Address" styleClass="mb-4" [toggleable]="true">
-      <div class="grid">
-        <div class="col-4">
-          <h5>Shipping Address</h5>
-          <p>
-            {{ order.shippingAddress1 }}<br />
-            {{ order.shippingAddress2 }}<br />
-            {{ order.zip }}{{ order.city }}
-          </p>
+      <div class="grid admin-order-addresses">
+        <div class="col-12 md:col-4">
+          <div class="admin-order-card admin-order-card--tall">
+            <span class="admin-order-card__label">Shipping Address</span>
+            <p class="admin-order-card__value admin-order-card__value--stacked">
+              {{ order.shippingAddress1 }}<br />
+              {{ order.shippingAddress2 }}<br />
+              {{ order.zip }} {{ order.city }}
+            </p>
+          </div>
         </div>
-        <div class="col-4">
-          <h5>Customer Info</h5>
-          <p>{{ order.user.name }}</p>
+        <div class="col-12 md:col-4">
+          <div class="admin-order-card admin-order-card--tall">
+            <span class="admin-order-card__label">Customer Name</span>
+            <p class="admin-order-card__value">{{ order.user.name }}</p>
+          </div>
         </div>
-        <div class="col-4">
-          <h5>Customer Info</h5>
-          <p>{{ order.phone }}</p>
+        <div class="col-12 md:col-4">
+          <div class="admin-order-card admin-order-card--tall">
+            <span class="admin-order-card__label">Customer Phone</span>
+            <p class="admin-order-card__value">{{ order.phone }}</p>
+          </div>
         </div>
       </div>
     </p-fieldset></p-card

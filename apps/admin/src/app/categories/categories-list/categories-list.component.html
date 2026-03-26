@@ -4,11 +4,11 @@
     <div class="p-grid">
       <div class="p-col-md-8 p-col-sm-12">
         <p-toolbar>
-          <div class="p-toolbar-group-left m-3">
+          <div class="p-toolbar-group-left m-3 admin-toolbar-group">
             <p-button
               label="New"
               icon="pi pi-plus"
-              styleClass="p-button-success"
+              styleClass="p-button-success admin-button"
               class="p-button p-button-success"
               routerLink="form"
             ></p-button>
@@ -18,9 +18,10 @@
     </div>
     <div class="p-grid">
       <p-table
+        styleClass="admin-responsive-table"
         [value]="categories"
         [tableStyle]="{ 'min-width': '10rem' }"
-        responsiveLayout="scroll | stack"
+        responsiveLayout="stack"
       >
         <ng-template pTemplate="header">
           <tr>
@@ -31,36 +32,48 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-Category>
-          <tr>
-            <td>{{ Category.name }}</td>
+          <tr class="admin-table-row">
             <td>
-              <i
-                class="pi"
-                [ngClass]="'pi-' + Category.icon"
-                style="font-size: 2rem"
-              ></i>
+              <span class="admin-cell-label">Name</span>
+              <span class="admin-cell-value">{{ Category.name }}</span>
             </td>
             <td>
-              <i
-                class="pi"
-                ngClass="pi-circle-fill"
-                style="font-size: 2rem"
-                [ngStyle]="{ color: Category.color }"
-              ></i>
+              <span class="admin-cell-label">Icon</span>
+              <span class="admin-cell-value">
+                <i
+                  class="pi"
+                  [ngClass]="'pi-' + Category.icon"
+                  style="font-size: 2rem"
+                ></i>
+              </span>
             </td>
             <td>
-              <p-button
-                icon="pi pi-trash"
-                (onClick)="deleteCategory(Category.id)"
-                styleClass="p-button-danger"
-                class="mr-3"
-              ></p-button>
-              <p-button
-                icon="pi pi-pencil"
-                styleClass="p-button-success"
-                (onClick)="updateCategory(Category.id)"
-                class=""
-              ></p-button>
+              <span class="admin-cell-label">Color</span>
+              <span class="admin-cell-value">
+                <i
+                  class="pi"
+                  ngClass="pi-circle-fill"
+                  style="font-size: 2rem"
+                  [ngStyle]="{ color: Category.color }"
+                ></i>
+              </span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Actions</span>
+              <span class="admin-cell-value admin-action-group">
+                <p-button
+                  icon="pi pi-trash"
+                  (onClick)="deleteCategory(Category.id)"
+                  styleClass="p-button-danger admin-action-button"
+                  class="mr-3"
+                ></p-button>
+                <p-button
+                  icon="pi pi-pencil"
+                  styleClass="p-button-success admin-action-button"
+                  (onClick)="updateCategory(Category.id)"
+                  class=""
+                ></p-button>
+              </span>
             </td>
           </tr>
         </ng-template>

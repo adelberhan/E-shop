@@ -1,6 +1,6 @@
 .admin {
   &-wrapper {
-    height: 100vh;
+    min-height: 100vh;
     padding: 0;
     margin: 0;
   }
@@ -16,9 +16,14 @@
     background-color: var(--surface-overlay);
     height: 100%;
     top: 0;
+    left: 0;
+    z-index: 1100;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    border-right: 1px solid rgba(245, 141, 137, 0.14);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.18);
 
     .logo {
-      padding: 20px;
+      padding: 20px 20px 10px;
       width: 100%;
 
       img {
@@ -37,21 +42,26 @@
           width: 100%;
 
           a {
-            color: var(--yellow-300);
-            padding: 10px 15px;
-            display: block;
+            padding: 12px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
             width: 100%;
             color: #f58d89;
-
+            border-radius: 12px;
+            transition: background-color 0.2s ease, color 0.2s ease,
+              transform 0.2s ease;
 
             &:hover {
                 background-color: #130c0a;
+                color: #fff1f0;
+                transform: translateX(2px);
             }
 
             i {
-              margin-right: 8px;
+              margin-right: 0;
               margin-top: 0;
-              float: left;
+              font-size: 1rem;
             }
 
             &.logout {
@@ -65,9 +75,26 @@
 
   &-page {
     padding: 15px;
-    height: 100vh;
+    min-height: 100vh;
     margin-left: 170px;
   }
+}
+
+.admin-content {
+  min-height: 100vh;
+}
+
+.admin-sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: rgba(5, 7, 10, 0.55);
+  backdrop-filter: blur(3px);
+  display: none;
+}
+
+.admin-mobile-header {
+  display: none;
 }
 
 .p-inputtext {
@@ -76,7 +103,7 @@
 }
 .p-datatable .p-datatable-tbody > tr > td {
   border: 1px rgb(29, 39, 41) solid;
-  padding: 0;
+  padding: 0.75rem;
   text-align: center;
 }
 
@@ -87,8 +114,211 @@
   color: rgb(183, 208, 209) !important;
 }
 
+.admin-button {
+  min-height: 2.75rem;
+  padding: 0 1rem !important;
+  font-size: 0.95rem;
+}
 
-// .p-dropdown{
-//   // padding-bottom: 10px;
-//   height: 35.12px;
-// }
+.admin-action-button {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.admin-toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.admin-toolbar-group--right {
+  justify-content: flex-end;
+}
+
+.admin-table-image {
+  width: 100px;
+  max-width: 100%;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.admin-cell-label {
+  display: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #f58d89;
+}
+
+.admin-cell-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-action-group {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+@media screen and (max-width: 991px) {
+  .admin-main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .admin-sidebar-backdrop {
+    display: block;
+  }
+
+  .admin-sidebar {
+    width: 280px;
+    max-width: calc(100vw - 2rem);
+    height: 100vh;
+    transform: translateX(-100%);
+    border-radius: 0 20px 20px 0;
+    overflow-y: auto;
+  }
+
+  .admin-sidebar.admin-sidebar--open {
+    transform: translateX(0);
+  }
+
+  .admin-page {
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .admin-mobile-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0 1rem 1rem;
+    padding: 0.85rem 1rem;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(211, 65, 71, 0.12), rgba(27, 17, 16, 0.88));
+    border: 1px solid rgba(245, 141, 137, 0.14);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.18);
+  }
+
+  .admin-mobile-header__content {
+    min-width: 0;
+  }
+
+  .admin-mobile-header__eyebrow {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #f58d89;
+    margin-bottom: 0.25rem;
+  }
+
+  .admin-mobile-header__title {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #fff;
+  }
+
+  .admin-mobile-header__button {
+    width: 2.85rem;
+    height: 2.85rem;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    border: 0;
+    background: linear-gradient(135deg, #d34147 0%, #231311 100%);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(211, 65, 71, 0.28);
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .admin-button {
+    width: 100%;
+    justify-content: center;
+    min-height: 2.5rem;
+    font-size: 0.9rem;
+  }
+
+  .admin-action-button {
+    width: 2.25rem;
+    height: 2.25rem;
+  }
+
+  .admin-toolbar-group,
+  .admin-toolbar-group--right {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .admin-mobile-header {
+    margin: 0 0.75rem 1rem;
+    padding: 0.85rem 0.9rem;
+  }
+
+  .admin-mobile-header__button {
+    width: 2.65rem;
+    height: 2.65rem;
+  }
+
+  .admin-responsive-table {
+    .p-datatable-thead {
+      display: none;
+    }
+
+    .p-datatable-tbody > tr {
+      display: block;
+      margin-bottom: 1rem;
+      border: 1px solid rgb(29, 39, 41);
+      border-radius: 0.9rem;
+      overflow: hidden;
+      background: var(--surface-card);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .p-datatable-tbody > tr > td {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      width: 100%;
+      border: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+      padding: 0.9rem 1rem;
+      white-space: normal;
+    }
+
+    .p-datatable-tbody > tr > td:last-child {
+      border-bottom: 0;
+    }
+
+    .p-datatable-tbody > tr > td .admin-cell-label {
+      display: inline-block;
+      flex: 0 0 42%;
+    }
+
+    .p-datatable-tbody > tr > td .admin-cell-value,
+    .p-datatable-tbody > tr > td > p-button,
+    .p-datatable-tbody > tr > td > img,
+    .p-datatable-tbody > tr > td > p-tag,
+    .p-datatable-tbody > tr > td > span:not(.admin-cell-label) {
+      flex: 1 1 auto;
+      justify-content: flex-end;
+      text-align: right;
+      min-width: 0;
+    }
+
+    .p-datatable-tbody > tr > td:last-child {
+      align-items: center;
+    }
+  }
+}

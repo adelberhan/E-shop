@@ -4,11 +4,11 @@
     <div class="p-grid">
       <div class="p-col-md-8 p-col-sm-12">
         <p-toolbar>
-          <div class="p-toolbar-group-left m-3">
+          <div class="p-toolbar-group-left m-3 admin-toolbar-group">
             <p-button
               label="New"
               icon="pi pi-plus"
-              styleClass="p-button-success"
+              styleClass="p-button-success admin-button"
               class="p-button p-button-success"
               routerLink="form"
             ></p-button>
@@ -18,9 +18,10 @@
     </div>
     <div class="p-grid">
       <p-table
+        styleClass="admin-responsive-table"
         [value]="user"
         [tableStyle]="{ 'min-width': '10rem' }"
-        responsiveLayout="scroll | stack"
+        responsiveLayout="stack"
       >
         <ng-template pTemplate="header">
           <tr>
@@ -32,33 +33,55 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-user>
-          <tr>
-            <td>{{ user.name }}</td>
+          <tr class="admin-table-row">
             <td>
-              {{ user.email }}
+              <span class="admin-cell-label">Name</span>
+              <span class="admin-cell-value">{{ user.name }}</span>
             </td>
             <td>
-              <p-tag
-                *ngIf="user.isAdmin"
-                severity="success"
-                icon="pi pi-check"
-                [rounded]="true"
-              ></p-tag>
+              <span class="admin-cell-label">Email</span>
+              <span class="admin-cell-value">{{ user.email }}</span>
             </td>
-            <td>{{ getCountryName(user.country) }}</td>
             <td>
-              <p-button
-                icon="pi pi-trash"
-                (onClick)="deleteUser(user.id)"
-                styleClass="p-button-danger"
-                class="mr-3"
-              ></p-button>
-              <p-button
-                icon="pi pi-pencil"
-                styleClass="p-button-success"
-                (onClick)="updateUser(user.id)"
-                class=""
-              ></p-button>
+              <span class="admin-cell-label">Is admin</span>
+              <span class="admin-cell-value">
+                <p-tag
+                  *ngIf="user.isAdmin"
+                  severity="success"
+                  icon="pi pi-check"
+                  [rounded]="true"
+                ></p-tag>
+                <span *ngIf="!user.isAdmin">
+                  <p-tag
+                    severity="danger"
+                    icon="pi pi-times"
+                    [rounded]="true"
+                  ></p-tag>
+                </span>
+              </span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Country</span>
+              <span class="admin-cell-value">{{
+                getCountryName(user.country)
+              }}</span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Actions</span>
+              <span class="admin-cell-value admin-action-group">
+                <p-button
+                  icon="pi pi-trash"
+                  (onClick)="deleteUser(user.id)"
+                  styleClass="p-button-danger admin-action-button"
+                  class="mr-3"
+                ></p-button>
+                <p-button
+                  icon="pi pi-pencil"
+                  styleClass="p-button-success admin-action-button"
+                  (onClick)="updateUser(user.id)"
+                  class=""
+                ></p-button>
+              </span>
             </td>
           </tr>
         </ng-template>

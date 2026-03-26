@@ -4,4 +4,14 @@ import { Component } from '@angular/core';
   selector: 'admin-shell',
   templateUrl: './shell.component.html',
 })
-export class ShellComponent {}
+export class ShellComponent {
+  sidebarOpen = false;
+
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  closeSidebar() {
+    this.sidebarOpen = false;
+  }
+}

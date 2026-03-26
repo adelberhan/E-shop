@@ -1,0 +1,181 @@
+:host {
+  display: block;
+}
+
+.admin-order-summary,
+.admin-order-addresses {
+  margin-top: 0.25rem;
+}
+
+.admin-order-card {
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(245, 141, 137, 0.12);
+  border-radius: 1rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+}
+
+.admin-order-card--tall {
+  min-height: 100%;
+}
+
+.admin-order-card--status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.admin-order-card__label {
+  display: inline-block;
+  margin-bottom: 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #f58d89;
+}
+
+.admin-order-card__value {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  word-break: break-word;
+}
+
+.admin-order-card__value--small {
+  font-size: 0.92rem;
+  font-weight: 500;
+}
+
+.admin-order-card__value--stacked {
+  line-height: 1.7;
+}
+
+:host ::ng-deep .admin-order-status-dropdown {
+  width: 100%;
+  max-width: 280px;
+}
+
+:host ::ng-deep .admin-order-card--status .p-dropdown {
+  margin: 0 auto;
+}
+
+:host ::ng-deep .admin-order-card--status .p-dropdown-label {
+  text-align: center;
+}
+
+.admin-order-status-text {
+  margin: 0.85rem 0 0;
+  font-size: 0.92rem;
+  color: #d8dbe3;
+}
+
+.admin-order-status-text span {
+  color: #fff;
+  font-weight: 700;
+}
+
+.admin-order-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.admin-order-item {
+  padding: 1rem;
+  border: 1px solid rgba(245, 141, 137, 0.12);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.admin-order-item__row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-order-item__row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.admin-order-item__row--total {
+  margin-top: 0.25rem;
+  font-weight: 700;
+}
+
+.admin-order-item__label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #f58d89;
+}
+
+.admin-order-item__value {
+  text-align: right;
+  color: #fff;
+  word-break: break-word;
+}
+
+.admin-order-total {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.admin-order-total__label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #f58d89;
+}
+
+.admin-order-total__value {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+@media screen and (max-width: 991px) {
+  .admin-order-items {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .admin-order-card,
+  .admin-order-item {
+    padding: 0.9rem;
+  }
+
+  .admin-order-item__row,
+  .admin-order-total {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .admin-order-item__value,
+  .admin-order-total__value {
+    text-align: left;
+  }
+}
+
+:host ::ng-deep .p-inputtext {
+  height: 35.12px;
+  padding-left: 9px;
+  display: flex;
+  align-items: center;
+}

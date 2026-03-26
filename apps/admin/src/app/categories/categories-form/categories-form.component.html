@@ -8,18 +8,18 @@
       <div class="col-12">
         <p-toolbar>
           <div class="p-toolbar-group-left"></div>
-          <div class="p-toolbar-group-right">
+          <div class="p-toolbar-group-right admin-toolbar-group admin-toolbar-group--right">
             <p-button
               [label]="editmode ? 'Update' : 'Create'"
               icon="pi pi-plus"
               (onClick)="onSubmit()"
-              styleClass="p-button-primary mr-2 p-3"
+              styleClass="p-button-primary mr-2 admin-button"
             ></p-button>
             <p-button
               label="Cancel"
               (onClick)="cancel()"
               icon="pi pi-arrow-circle-left"
-              styleClass="p-button-secondary mr-2 p-3"
+              styleClass="p-button-secondary mr-2 admin-button"
             ></p-button>
           </div>
         </p-toolbar>

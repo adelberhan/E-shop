@@ -1,4 +1,33 @@
 <div class="admin-wrapper">
-  <admin-sidebar></admin-sidebar>
-  <div class="admin-content"><router-outlet> </router-outlet></div>
+  <div
+    class="admin-sidebar-backdrop"
+    *ngIf="sidebarOpen"
+    (click)="closeSidebar()"
+  ></div>
+
+  <admin-sidebar
+    [isOpen]="sidebarOpen"
+    (sidebarClose)="closeSidebar()"
+  ></admin-sidebar>
+
+  <div class="admin-content">
+    <div class="admin-mobile-header">
+      <button
+        type="button"
+        class="admin-mobile-header__button"
+        (click)="toggleSidebar()"
+        [attr.aria-expanded]="sidebarOpen"
+        aria-label="Open navigation"
+      >
+        <i class="pi" [ngClass]="sidebarOpen ? 'pi-times' : 'pi-bars'"></i>
+      </button>
+
+      <div class="admin-mobile-header__content">
+        <span class="admin-mobile-header__eyebrow">Admin Panel</span>
+        <h1 class="admin-mobile-header__title">Dashboard</h1>
+      </div>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
 </div>

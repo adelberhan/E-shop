@@ -4,11 +4,11 @@
     <div class="p-grid">
       <div class="p-col-md-8 p-col-sm-12">
         <p-toolbar>
-          <div class="p-toolbar-group-left m-3">
+          <div class="p-toolbar-group-left m-3 admin-toolbar-group">
             <p-button
               label="New"
               icon="pi pi-plus"
-              styleClass="p-button-success"
+              styleClass="p-button-success admin-button"
               class="p-button p-button-success"
               routerLink="form"
             ></p-button>
@@ -18,13 +18,14 @@
     </div>
     <div class="p-grid">
       <p-table
+        styleClass="admin-responsive-table"
         [paginator]="true"
         [rows]="10"
         [showCurrentPageReport]="true"
         [value]="products"
         [rowsPerPageOptions]="[20, 30, 50]"
         [tableStyle]="{ 'min-width': '10rem' }"
-        responsiveLayout="scroll | stack"
+        responsiveLayout="stack"
       >
         <ng-template pTemplate="header">
           <tr>
@@ -49,27 +50,50 @@
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-product>
-          <tr>
-            <td>{{ product.name }}</td>
-            <td><img [src]="product.img" style="width: 100px" alt="" /></td>
-            <td>{{ product.price }}</td>
-            <td>{{ product.countInStock }}</td>
-            <td>{{ product.category.name }}</td>
-            <td>{{ product.dateCreated | date : 'short' }}</td>
+          <tr class="admin-table-row">
+            <td>
+              <span class="admin-cell-label">Name</span>
+              <span class="admin-cell-value">{{ product.name }}</span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Image</span>
+              <span class="admin-cell-value">
+                <img [src]="product.img" class="admin-table-image" alt="" />
+              </span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Price</span>
+              <span class="admin-cell-value">{{ product.price }}</span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Stock</span>
+              <span class="admin-cell-value">{{ product.countInStock }}</span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Category</span>
+              <span class="admin-cell-value">{{ product.category.name }}</span>
+            </td>
+            <td>
+              <span class="admin-cell-label">Created At</span>
+              <span class="admin-cell-value">{{ product.dateCreated | date : 'short' }}</span>
+            </td>
 
             <td>
-              <p-button
-                icon="pi pi-trash"
-                styleClass="p-button-danger"
-                (onClick)="deleteProduct(product.id)"
-                class="mr-2"
-              ></p-button>
-              <p-button
-                icon="pi pi-pencil"
-                styleClass="p-button-success"
-                (onClick)="updateProduct(product.id)"
-                class=""
-              ></p-button>
+              <span class="admin-cell-label">Actions</span>
+              <span class="admin-cell-value admin-action-group">
+                <p-button
+                  icon="pi pi-trash"
+                  styleClass="p-button-danger admin-action-button"
+                  (onClick)="deleteProduct(product.id)"
+                  class="mr-2"
+                ></p-button>
+                <p-button
+                  icon="pi pi-pencil"
+                  styleClass="p-button-success admin-action-button"
+                  (onClick)="updateProduct(product.id)"
+                  class=""
+                ></p-button>
+              </span>
             </td>
           </tr>
         </ng-template>

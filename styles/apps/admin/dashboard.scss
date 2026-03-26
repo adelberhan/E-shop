@@ -1,20 +1,48 @@
 .d-item {
   display: flex;
-  text-align: center;
   justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  text-align: left;
+  min-height: 140px;
+
   .pi {
     font-size: 2.5em;
     margin-bottom: 15px;
   }
   .name {
     font-size: 1.2em;
+    display: inline-block;
   }
   .number {
-    margin-top: 50px;
     font-size: 2em;
-    
+    font-weight: 700;
+    line-height: 1.1;
   }
 }
+
+.admin-dashboard-card {
+  .p-card-content {
+    padding-top: 0.5rem;
+  }
+}
+
+.admin-dashboard-grid {
+  margin-top: 0.25rem;
+}
+
+.d-order,
+.d-users,
+.d-totalOrders,
+.d-product {
+  color: #fff;
+
+  .p-card-body,
+  .p-card-content {
+    height: 100%;
+  }
+}
+
 .d-order {
   background: linear-gradient(255deg, #D34147 0%, #000000 100%);
 }
@@ -30,4 +58,25 @@ background: linear-gradient(90deg, #D34147 0%, #000000 100%);
 .d-product{
 background: linear-gradient(180deg, #D34147 0%, #000000 100%);
 
+}
+
+@media screen and (max-width: 768px) {
+  .d-item {
+    min-height: auto;
+
+    .pi {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .name {
+      font-size: 1rem;
+    }
+
+    .number {
+      font-size: 1.5rem;
+      text-align: right;
+      word-break: break-word;
+    }
+  }
 }
