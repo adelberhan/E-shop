@@ -9,6 +9,8 @@ export const CART_KEY = 'cart';
 })
 export class CartService {
   cart$: BehaviorSubject<Cart> = new BehaviorSubject(this.getCart());
+  cartAction$: BehaviorSubject<'init' | 'add' | 'update' | 'delete' | 'clear'> =
+    new BehaviorSubject<'init' | 'add' | 'update' | 'delete' | 'clear'>('init');
   // BehaviorSubject we use it here because the the subject execution is after the constrictor
   // So the BehaviorSubject can execution any time i want him to be executed with mentioned
   // the function that will be executed whit it.
@@ -66,6 +68,7 @@ export class CartService {
     }
 
     this.saveCart(cart);
+    this.cartAction$.next(updateCartItem ? 'update' : 'add');
     return cart;
   }
 
@@ -74,6 +77,7 @@ export class CartService {
       items: [],
     };
     this.saveCart(intialCart);
+    this.cartAction$.next('clear');
   }
 
   deleteCartItem(productId: string) {
@@ -82,6 +86,7 @@ export class CartService {
     cart.items = newCart;
 
     this.saveCart(cart);
+    this.cartAction$.next('delete');
   }
 
   private saveCart(cart: Cart) {

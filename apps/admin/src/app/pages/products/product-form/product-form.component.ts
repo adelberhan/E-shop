@@ -12,7 +12,7 @@ import { ProductsService } from '../../../../../../../libs/products/src/lib/serv
 @Component({
   selector: 'admin-product-form',
   templateUrl: './product-form.component.html',
-  styles: [],
+  styleUrls: ['./product-form.component.scss'],
 })
 export class ProductFormComponent implements OnInit, OnDestroy {
   editmode = false;

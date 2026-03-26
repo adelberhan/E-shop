@@ -1,0 +1,32 @@
+@import '../../../../../../../styles/base/colors.scss';
+
+:host ::ng-deep .admin-product-form__number-input.p-inputnumber {
+  display: flex;
+  width: 100%;
+  border: 1px solid var(--surface-300);
+  border-radius: 0.9rem;
+  overflow: hidden;
+  background: var(--surface-0);
+  box-shadow: 0 8px 22px rgba(15, 23, 42, 0.06);
+}
+
+:host ::ng-deep .admin-product-form__number-input .p-inputnumber-input {
+  width: 100%;
+  min-height: 2.85rem;
+  border: 0;
+  padding: 0.75rem 0.9rem;
+  font-weight: 600;
+  color: var(--surface-900);
+}
+
+:host ::ng-deep .admin-product-form__number-input .p-inputnumber-button {
+  width: 2.65rem;
+  border: 0;
+  background: linear-gradient(180deg, var(--surface-50), var(--surface-100));
+  color: var(--surface-700);
+}
+
+:host ::ng-deep .admin-product-form__number-input .p-inputnumber-button:hover {
+  background: rgba(255, 58, 0, 0.08);
+  color: $primary-color;
+}

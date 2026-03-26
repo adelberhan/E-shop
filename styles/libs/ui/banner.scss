@@ -1,41 +1,84 @@
 .banner {
   min-height: 280px;
   max-width: 100%;
-  background-color: #d7effb !important;
-  border-radius: 15px;
+  background:
+    radial-gradient(circle at top left, rgba(255, 255, 255, 0.85), transparent 42%),
+    linear-gradient(135deg, #dff4ff 0%, #cfe9ff 55%, #eaf5ff 100%) !important;
+  border-radius: 22px;
+  overflow: hidden;
   &-text {
     color: var(--surface-700);
-    margin-top: 50px;
+    margin-top: 42px;
+    position: relative;
+    z-index: 2;
     h1 {
-      margin: 7px;
-      font-size: 2.5em;
-      line-height: 1;
-      font-weight: 400;
+      margin: 0;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.3rem, 5vw, 3.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      max-width: 8ch;
+      text-wrap: balance;
     }
     h2 {
-      margin: 35px;
-      font-size: 2em;
-      font-weight: 300;
-      padding-top: 5px;
+      margin: 1rem 0 0;
+      font-size: clamp(1.1rem, 2vw, 1.45rem);
+      font-weight: 500;
+      color: var(--surface-600);
+      padding-top: 0;
     }
   }
+
+  .banner-title {
+    display: inline-block;
+    padding-inline-end: 0.2em;
+  }
+
   &-image {
     text-align: right;
-    padding: 15px 15px 0 0;
+    padding: 18px 22px 0 0;
+
+    img {
+      display: block;
+      width: min(100%, 420px);
+      margin-left: auto;
+      transform: translateX(28px) translateY(8px);
+    }
   }
 
   &-button {
-    margin-top: 15px;
+    margin-top: 1.5rem;
     background-color: var(--surface-0);
     color: $primary-color;
     border: 0;
-    border-radius: 13px;
+    border-radius: 999px;
     height: 50px;
+    padding-inline: 0.6rem;
+    box-shadow: 0 14px 30px rgba(255, 58, 0, 0.12);
 
     &:enabled:hover {
       background-color: var(--surface-0);
       color: $primary-color;
       border: 0;
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .banner {
+    &-text {
+      margin-top: 2rem;
+    }
+
+    &-image {
+      padding: 0 1rem 1rem;
+
+      img {
+        width: min(100%, 320px);
+        margin: 0 auto;
+        transform: translateY(4px);
+      }
     }
   }
 }

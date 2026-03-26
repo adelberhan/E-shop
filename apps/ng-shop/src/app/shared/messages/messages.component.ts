@@ -11,11 +11,19 @@ export class MessagesComponent implements OnInit {
     private cartService: CartService,
     private messageService: MessageService
   ) {
-    this.cartService.cart$.subscribe(() => {
+    this.cartService.cartAction$.subscribe((action) => {
+      if (action !== 'add') {
+        return;
+      }
+
+      const isArabic = document.documentElement.lang === 'ar';
+
       this.messageService.add({
         severity: 'success',
-        summary: 'Success',
-        detail: 'Product added to cart',
+        summary: isArabic ? '\u062a\u0645' : 'Success',
+        detail: isArabic
+          ? '\u062a\u0645 \u0625\u0636\u0627\u0641\u0629 \u0627\u0644\u0645\u0646\u062a\u062c \u0625\u0644\u0649 \u0627\u0644\u0633\u0644\u0629'
+          : 'Product added to cart',
       });
     });
   }

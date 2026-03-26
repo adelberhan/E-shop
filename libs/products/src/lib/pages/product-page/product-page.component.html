@@ -28,6 +28,7 @@
         <div class="product-page__quantity">
           <label for="quantity">{{ 'product.quantity' | translate }}</label>
           <p-inputNumber
+            styleClass="product-page__quantity-input"
             [(ngModel)]="quantity"
             mode="decimal"
             [showButtons]="true"

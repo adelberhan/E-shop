@@ -123,6 +123,36 @@
   width: 100%;
 }
 
+:host ::ng-deep .product-page__quantity .p-inputnumber {
+  display: flex;
+  border: 1px solid var(--surface-300);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: var(--surface-0);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+:host ::ng-deep .product-page__quantity .p-inputnumber-input {
+  min-height: 3.2rem;
+  border: 0;
+  padding-inline: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--surface-900);
+}
+
+:host ::ng-deep .product-page__quantity .p-inputnumber-button {
+  width: 3rem;
+  border: 0;
+  background: linear-gradient(180deg, var(--surface-50), var(--surface-100));
+  color: var(--surface-700);
+}
+
+:host ::ng-deep .product-page__quantity .p-inputnumber-button:hover {
+  background: rgba(255, 58, 0, 0.08);
+  color: $primary-color;
+}
+
 :host ::ng-deep .product-page__button.p-button {
   width: 100%;
   min-height: 3.25rem;
