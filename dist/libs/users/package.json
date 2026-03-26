@@ -1,0 +1,27 @@
+{
+  "name": "@ng-shop/users",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^15.2.0",
+    "@angular/core": "^15.2.0",
+    "rxjs": "7.8.2",
+    "i18n-iso-countries": "7.14.0",
+    "@angular/router": "16.1.3"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "module": "esm2022/ng-shop-users.mjs",
+  "typings": "index.d.ts",
+  "exports": {
+    "./package.json": {
+      "default": "./package.json"
+    },
+    ".": {
+      "esm2022": "./esm2022/ng-shop-users.mjs",
+      "esm": "./esm2022/ng-shop-users.mjs",
+      "default": "./esm2022/ng-shop-users.mjs"
+    }
+  }
+}
