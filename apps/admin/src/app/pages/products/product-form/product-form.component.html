@@ -63,12 +63,17 @@
               <div class="p-field col-4">
                 <label for="price">Price</label>
                 <p-inputNumber
+                  class="admin-product-form__number-input"
                   mode="decimal"
                   formControlName="price"
-                  class="mt-2"
                   inputId="price"
                   [useGrouping]="false"
-                  [inputStyle]="{ height: '35.12px', padding: '9px' }"
+                  buttonLayout="horizontal"
+                  decrementButtonStyleClass="admin-product-form__step-button admin-product-form__step-button--decrement"
+                  incrementButtonStyleClass="admin-product-form__step-button admin-product-form__step-button--increment"
+                  decrementButtonIcon="pi pi-minus"
+                  incrementButtonIcon="pi pi-plus"
+                  [showButtons]="true"
                 >
                 </p-inputNumber>
 
@@ -83,10 +88,16 @@
               <div class="field col-4">
                 <label for="countInStock">count In Stock</label><br />
                 <p-inputNumber
+                  class="admin-product-form__number-input"
                   formControlName="countInStock"
                   mode="decimal"
-                  [inputStyle]="{ height: '35.12px',padding: '9px' }"
                   [useGrouping]="false"
+                  [showButtons]="true"
+                  buttonLayout="horizontal"
+                  decrementButtonStyleClass="admin-product-form__step-button admin-product-form__step-button--decrement"
+                  incrementButtonStyleClass="admin-product-form__step-button admin-product-form__step-button--increment"
+                  decrementButtonIcon="pi pi-minus"
+                  incrementButtonIcon="pi pi-plus"
                 >
                 </p-inputNumber>
                 <small

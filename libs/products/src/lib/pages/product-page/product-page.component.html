@@ -28,12 +28,18 @@
         <div class="product-page__quantity">
           <label for="quantity">{{ 'product.quantity' | translate }}</label>
           <p-inputNumber
+            class="product-page__quantity-input"
             [(ngModel)]="quantity"
             mode="decimal"
             [showButtons]="true"
+            buttonLayout="horizontal"
             inputId="quantity"
             [min]="1"
             [max]="100"
+            decrementButtonIcon="pi pi-minus"
+            incrementButtonIcon="pi pi-plus"
+            decrementButtonStyleClass="product-page__step-button product-page__step-button--decrement"
+            incrementButtonStyleClass="product-page__step-button product-page__step-button--increment"
           >
           </p-inputNumber>
         </div>
