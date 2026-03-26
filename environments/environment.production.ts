@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://shop-back-end.onrender.com/api/v1/',
+  apiUrl: 'https://e-shop-back-end-kzvv.onrender.com/api/v1/',
   clientUrl: 'https://your-ngshop-site.netlify.app',
 };

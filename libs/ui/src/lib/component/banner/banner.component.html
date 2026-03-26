@@ -1,22 +1,22 @@
 <div class="banner">
-  <div class="grid min-h-full">
-    <div class="col-5 col-offset-1 banner-text">
+  <div class="banner-content">
+    <div class="banner-text">
       <h1>{{ 'banner.title' | translate }}</h1>
       <h2>{{ 'banner.subtitle' | translate }}</h2>
       <p-button
         styleClass="banner-button"
         [label]="'banner.seeMore' | translate"
-        icon="pi pi-chevron-right"
-        iconPos="right"
+        [icon]="isRtl ? 'pi pi-chevron-left' : 'pi pi-chevron-right'"
+        [iconPos]="isRtl ? 'left' : 'right'"
         (onClick)="goToProducts()"
       ></p-button>
     </div>
-    <div class="col-6 banner-image animate__animated animate__slideInLeft">
+    <div class="banner-image animate__animated animate__slideInLeft">
       <img
-        src="assets\imgs\banner-image.svg"
-
+        src="assets/imgs/banner-image.svg"
         alt="Banner"
       />
     </div>
   </div>
 </div>
+

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, Inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,7 +8,14 @@ import { Router } from '@angular/router';
   styles: [],
 })
 export class BannerComponent {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
+
+  get isRtl(): boolean {
+    return this.document.documentElement.dir === 'rtl';
+  }
 
   goToProducts() {
     this.router.navigate(['/products']);

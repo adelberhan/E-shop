@@ -16,7 +16,15 @@
         "polyfills": ["zone.js"],
         "tsConfig": "apps/admin/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/admin/src/favicon.ico", "apps/admin/src/assets"],
+        "assets": [
+          "apps/admin/src/favicon.ico",
+          "apps/admin/src/assets",
+          {
+            "glob": "*.json",
+            "input": "apps/ng-shop/src/assets/i18n",
+            "output": "assets/i18n"
+          }
+        ],
         "styles": [
           "apps/admin/src/styles.scss",
           "node_modules/quill/dist/quill.core.css",

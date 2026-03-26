@@ -1,0 +1,198 @@
+.order-detail-page {
+  color: #e5e7eb;
+}
+
+.order-detail-page__hero {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.75rem 1.75rem 0;
+  background:
+    radial-gradient(circle at top right, rgba(206, 222, 216, 0.18), transparent 35%),
+    linear-gradient(135deg, rgba(#262626, 0.95), rgba(#262626, 0.92));
+  border-radius: 12px 12px 0 0;
+}
+
+.order-detail-page__hero h2,
+.order-detail-page__panel-heading h3 {
+  margin: 0;
+}
+
+.order-detail-page__hero p,
+.order-detail-page__panel-heading p {
+  margin: 0.5rem 0 0;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.order-detail-page__eyebrow,
+.order-detail-page__meta-label {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+.order-detail-page__hero-meta {
+  display: grid;
+  gap: 1rem;
+  min-width: 260px;
+}
+
+.order-detail-page__status-wrap,
+.order-detail-page__status-editor,
+.order-detail-page__stat-card,
+.order-detail-page__panel {
+  background: rgba(#262626, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.2);
+}
+
+.order-detail-page__status-wrap,
+.order-detail-page__status-editor {
+  padding: 1rem 1.1rem;
+}
+
+.order-detail-page__stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.order-detail-page__stat-card {
+  padding: 1rem 1.1rem;
+}
+
+.order-detail-page__stat-card strong,
+.order-detail-page__info-item strong,
+.order-detail-page__total strong {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.05rem;
+  color: #f8fafc;
+}
+
+.order-detail-page__content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(300px, 0.95fr);
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.order-detail-page__sidebar {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.order-detail-page__panel {
+  padding: 1.25rem;
+}
+
+.order-detail-page__panel-heading {
+  margin-bottom: 1rem;
+}
+
+.order-detail-page__product-name {
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.order-detail-page__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  color: #cbd5e1;
+}
+
+.order-detail-page__info-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.order-detail-page__info-item {
+  padding: 0.95rem 1rem;
+  background: rgba(30, 41, 59, 0.65);
+  border-radius: 12px;
+}
+
+:host ::ng-deep .order-detail-page .p-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+:host ::ng-deep .order-detail-page .p-card-body {
+  padding: 0;
+}
+
+:host ::ng-deep .order-detail-page .p-card-content {
+  padding: 0 1.75rem 1.75rem;
+  background: linear-gradient(180deg, rgba(4, 6, 9, 0.98), rgba(57, 58, 60, 0.94));
+  border-radius: 0 0 12px 12px;
+}
+
+:host ::ng-deep .order-detail-page .p-dropdown {
+  width: 100%;
+}
+
+:host ::ng-deep .order-detail-page .p-dropdown,
+:host ::ng-deep .order-detail-page .p-inputtext,
+:host ::ng-deep .order-detail-page .p-dropdown .p-dropdown-label {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(148, 163, 184, 0.2);
+  color: #f8fafc;
+}
+
+:host ::ng-deep .order-detail-page__table .p-datatable-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+:host ::ng-deep .order-detail-page__table .p-datatable-thead > tr > th {
+  background: rgba(30, 41, 59, 0.95);
+  color: #f8fafc;
+  border-color: rgba(148, 163, 184, 0.15);
+}
+
+:host ::ng-deep .order-detail-page__table .p-datatable-tbody > tr > td {
+  background: rgba(15, 23, 42, 0.88);
+  color: #e5e7eb;
+  border-color: rgba(148, 163, 184, 0.12);
+}
+
+@media screen and (max-width: 1100px) {
+  .order-detail-page__hero,
+  .order-detail-page__content {
+    grid-template-columns: 1fr;
+    display: grid;
+  }
+
+  .order-detail-page__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .order-detail-page__hero-meta {
+    min-width: 0;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .order-detail-page__hero {
+    padding: 1.25rem 1.25rem 0;
+  }
+
+  :host ::ng-deep .order-detail-page .p-card-content {
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .order-detail-page__stats {
+    grid-template-columns: 1fr;
+  }
+}
