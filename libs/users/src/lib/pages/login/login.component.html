@@ -1,26 +1,21 @@
 <section class="login-page">
   <div class="login-page__shell">
-    <div class="login-page__media">
-      <img src="assets/imgs/login-4.jpg" alt="Shopping lifestyle" />
-      <div class="login-page__media-overlay">
-        <span class="login-page__eyebrow">{{ 'login.heroEyebrow' | translate }}</span>
-        <h1>{{ 'login.heroTitle' | translate }}</h1>
-        <p>{{ 'login.heroDescription' | translate }}</p>
-      </div>
-    </div>
-
     <div class="login-page__panel">
+      <div class="login-page__badge">
+        <i class="pi pi-shield"></i>
+      </div>
+
       <div class="login-page__panel-header">
-        <span class="login-page__eyebrow">{{ 'login.account' | translate }}</span>
-        <h2 class="login-page__title">{{ 'login.title' | translate }}</h2>
+        <span class="login-page__eyebrow">Admin account</span>
+        <h2 class="login-page__title">Sign in</h2>
         <p class="login-page__subtitle">
-          {{ 'login.subtitle' | translate }}
+          Use your admin credentials to access the dashboard and manage the store.
         </p>
       </div>
 
       <form class="login-form" [formGroup]="loginFormGroup" (ngSubmit)="onSubmit()">
         <div class="login-form__field">
-          <label for="login-email">{{ 'login.emailAddress' | translate }}</label>
+          <label for="login-email">Email address</label>
           <div class="p-inputgroup">
             <span class="p-inputgroup-addon">
               <i class="pi pi-envelope"></i>
@@ -29,18 +24,18 @@
               id="login-email"
               pInputText
               type="email"
-              [placeholder]="'login.emailPlaceholder' | translate"
+              placeholder="Enter your email"
               formControlName="email"
             />
           </div>
           <small *ngIf="loginForm.email.invalid && isSubmitted" class="p-error">
-            <span *ngIf="loginForm.email.errors.required">{{ 'validation.emailRequired' | translate }}</span>
-            <span *ngIf="loginForm.email.errors.email">{{ 'validation.emailInvalid' | translate }}</span>
+            <span *ngIf="loginForm.email.errors.required">Email is required.</span>
+            <span *ngIf="loginForm.email.errors.email">Enter a valid email address.</span>
           </small>
         </div>
 
         <div class="login-form__field">
-          <label for="login-password">{{ 'login.password' | translate }}</label>
+          <label for="login-password">Password</label>
           <div class="p-inputgroup">
             <span class="p-inputgroup-addon">
               <i class="pi pi-lock"></i>
@@ -49,21 +44,27 @@
               id="login-password"
               pInputText
               type="password"
-              [placeholder]="'login.passwordPlaceholder' | translate"
+              placeholder="Enter your password"
               formControlName="password"
             />
           </div>
           <small *ngIf="loginForm.password.invalid && isSubmitted" class="p-error">
-            {{ 'validation.passwordRequired' | translate }}
+            Password is required.
           </small>
         </div>
 
         <div class="login-form__error" *ngIf="isSubmitted && authError">
-          <div class="p-error">{{ authMessage | translate }}</div>
+          <div class="p-error">
+            {{
+              authMessage === 'login.errors.server'
+                ? 'Something went wrong on the server. Please try again.'
+                : 'Invalid email or password.'
+            }}
+          </div>
         </div>
 
         <p-button
-          [label]="'buttons.login' | translate"
+          label="Login"
           type="submit"
           styleClass="login-form__submit"
         ></p-button>

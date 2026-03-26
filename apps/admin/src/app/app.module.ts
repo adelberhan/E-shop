@@ -46,6 +46,11 @@ import { AppRoutingModule } from './aap-routing-module';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { NgxStripeModule } from 'ngx-stripe';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {
+  TRANSLATE_HTTP_LOADER_CONFIG,
+  TranslateHttpLoader,
+} from '@ngx-translate/http-loader';
 
 const UX_MODULE = [
   CardModule,
@@ -94,6 +99,13 @@ const UX_MODULE = [
     EffectsModule.forRoot([]),
     HttpClientModule,
     AppRoutingModule,
+    TranslateModule.forRoot({
+      defaultLanguage: 'en',
+      loader: {
+        provide: TranslateLoader,
+        useClass: TranslateHttpLoader,
+      },
+    }),
     ...UX_MODULE,
     UsersModule,
     NgxStripeModule.forRoot(
@@ -104,6 +116,13 @@ const UX_MODULE = [
     CategoriesService,
     MessageService,
     ConfirmationService,
+    {
+      provide: TRANSLATE_HTTP_LOADER_CONFIG,
+      useValue: {
+        prefix: './assets/i18n/',
+        suffix: '.json',
+      },
+    },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

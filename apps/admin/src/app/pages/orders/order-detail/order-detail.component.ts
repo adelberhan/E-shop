@@ -11,12 +11,13 @@ import { Location } from '@angular/common';
 @Component({
   selector: 'ng-shop-order-detail',
   templateUrl: './order-detail.component.html',
-  styles: [],
+  styleUrls: ['./order-detail.component.scss'],
 })
 export class OrderDetailComponent implements OnInit, OnDestroy {
   order: Order
   endSubs$: Subject<any> = new Subject();
   orderStatus = [];
+  orderStatusMap = ORDER_STATUS;
   selectedStatus: any;
 
   constructor(
@@ -67,7 +68,7 @@ export class OrderDetailComponent implements OnInit, OnDestroy {
       });
     };
   }
-  
+
 
   private _getOrder() {
     this.route.params.subscribe((params) => {

@@ -69,12 +69,18 @@
                 </label>
 
                 <p-inputNumber
+                  class="cart-item__quantity-input"
                   mode="decimal"
                   [showButtons]="true"
+                  buttonLayout="horizontal"
                   [inputId]="'qty-' + cartItem.product.product.id"
                   [min]="1"
                   [max]="100"
                   [(ngModel)]="cartItem.quantity"
+                  decrementButtonIcon="pi pi-minus"
+                  incrementButtonIcon="pi pi-plus"
+                  decrementButtonStyleClass="cart-item__step-button cart-item__step-button--decrement"
+                  incrementButtonStyleClass="cart-item__step-button cart-item__step-button--increment"
                   (onInput)="updateCartItemQuantity($event, cartItem.product)"
                 >
                 </p-inputNumber>
