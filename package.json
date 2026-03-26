@@ -23,7 +23,7 @@
     "@ngx-translate/http-loader": "^17.0.0",
     "@nrwl/angular": "16.5.0",
     "@nx/angular": "^16.10.0",
-    "@stripe/stripe-js": "^1.54.1",
+    "@stripe/stripe-js": "^3.5.0",
     "animate.css": "^4.1.1",
     "bootstrap": "5.3",
     "i18n-iso-countries": "^7.6.0",
